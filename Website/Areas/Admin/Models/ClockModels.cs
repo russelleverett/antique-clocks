@@ -21,6 +21,9 @@ namespace Website.Areas.Admin.Models {
         [DisplayName("Show In Listing")]
         public bool Active { get; set; }
 
+        [DisplayName("Feature On Home Page")]
+        public bool Featured { get; set; }
+
         [DisplayName("Buy Now Id")]
         public string BuyNowId { get; set; }
 
@@ -48,6 +51,9 @@ namespace Website.Areas.Admin.Models {
 
         [DisplayName("Show In Listing")]
         public bool Active { get; set; }
+
+        [DisplayName("Feature On Home Page")]
+        public bool Featured { get; set; }
 
         [DisplayName("Buy Now Id")]
         public string BuyNowId { get; set; }

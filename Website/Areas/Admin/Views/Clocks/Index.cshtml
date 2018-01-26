@@ -12,6 +12,7 @@
                 <th>Name</th>
                 <th>Type(s)</th>
                 <th>Price</th>
+                <th>Featured</th>
                 <th>
                     <a href="/admin/clocks/add" class="btn btn-sm btn-success">Add New Clock</a>
                 </th>
@@ -24,6 +25,7 @@
                     <td>@clock.Name</td>
                     <td>N/A</td>
                     <td>@string.Format("{0:c}", clock.Price)</td>
+                    <td>@clock.Featured</td>
                     <td>
                         <a href="/admin/clocks/edit/@clock.Id" class="btn btn-group-sm">Edit</a>
                     </td>

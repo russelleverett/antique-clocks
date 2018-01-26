@@ -12,6 +12,7 @@ namespace Website.Infrastructure.Data.Entities {
         public string Number { get; set; }
         public decimal? Price { get; set; }
         public bool Active { get; set; }
+        public bool Featured { get; set; }
         public virtual IEnumerable<Resource> Resources { get; set; }
 
         [NotMapped]

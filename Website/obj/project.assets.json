@@ -10895,10 +10895,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\C#\\Website\\Website\\Website.csproj",
+      "projectUniqueName": "C:\\Projects\\C#\\antique-clocks\\Website\\Website.csproj",
       "projectName": "Website",
-      "projectPath": "C:\\Projects\\C#\\Website\\Website\\Website.csproj",
-      "outputPath": "C:\\Projects\\C#\\Website\\Website\\obj\\",
+      "projectPath": "C:\\Projects\\C#\\antique-clocks\\Website\\Website.csproj",
+      "outputPath": "C:\\Projects\\C#\\antique-clocks\\Website\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

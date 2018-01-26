@@ -39,28 +39,39 @@ namespace Website.Areas.Admin.Controllers {
                 BuyNowId = model.BuyNowId,
                 Features = model.Features,
                 Caveats = model.Caveats,
-                Description = model.Description
+                Description = model.Description,
+                Featured = model.Featured,
+                Active = model.Active
             };
             _context.Add(clock);
             _context.SaveChanges();
 
             // add the resources
-            foreach (var file in model.FileUploads) {
-                var resource = new Resource {
-                    Active = true,
-                    Name = clock.Name,
-                    FileName = file.FileName,
-                    ContentType = file.ContentType,
-                    ClockId = clock.Id
-                };
+            if (model.FileUploads != null) {
+                var _default = true;
+                foreach (var file in model.FileUploads) {
+                    var resource = new Resource {
+                        Active = true,
+                        Name = clock.Name,
+                        FileName = file.FileName,
+                        ContentType = file.ContentType,
+                        ClockId = clock.Id
+                    };
 
-                using (var ms = new MemoryStream()) {
-                    file.CopyTo(ms);
-                    resource.File = ms.ToArray();
+                    // tag the initial one as the default
+                    if (_default) {
+                        resource.Default = true;
+                        _default = false;
+                    }
+
+                    using (var ms = new MemoryStream()) {
+                        file.CopyTo(ms);
+                        resource.File = ms.ToArray();
+                    }
+                    _context.Add(resource);
                 }
-                _context.Add(resource);
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
 
             return Redirect("/admin/clocks");
         }
@@ -82,7 +93,8 @@ namespace Website.Areas.Admin.Controllers {
                     Caveats = clock.Caveats,
                     Description = clock.Description,
                     Active = clock.Active,
-                    Images = resources
+                    Images = resources,
+                    Featured = clock.Featured
                 });
             }   
             return Redirect("/admin/clocks");
@@ -102,27 +114,35 @@ namespace Website.Areas.Admin.Controllers {
                 clock.Caveats = model.Caveats;
                 clock.Description = model.Description;
                 clock.Active = model.Active;
+                clock.Featured = model.Featured;
 
                 _context.SaveChanges();
             }
 
-            // TODO: need to update the resources here
-            foreach (var file in model.FileUploads) {
-                var resource = new Resource {
-                    Name = clock.Name,
-                    FileName = file.FileName,
-                    ContentType = file.ContentType,
-                    Active = true,
-                    ClockId = clock.Id
-                };
+            if (model.FileUploads != null) {
+                var _default = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.Default) != null;
+                foreach (var file in model.FileUploads) {
+                    var resource = new Resource {
+                        Name = clock.Name,
+                        FileName = file.FileName,
+                        ContentType = file.ContentType,
+                        Active = true,
+                        ClockId = clock.Id
+                    };
 
-                using (var ms = new MemoryStream()) {
-                    file.CopyTo(ms);
-                    resource.File = ms.ToArray();
+                    if (_default) {
+                        resource.Default = true;
+                        _default = false;
+                    }
+
+                    using (var ms = new MemoryStream()) {
+                        file.CopyTo(ms);
+                        resource.File = ms.ToArray();
+                    }
+                    _context.Add(resource);
                 }
-                _context.Add(resource);
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
 
             return Redirect("/admin/clocks");
         }
