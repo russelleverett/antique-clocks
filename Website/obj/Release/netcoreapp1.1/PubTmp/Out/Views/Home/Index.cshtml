@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ClockThumbModel>
+
+<div class="tile-container clearfix">
+    @foreach (var clock in Model) {
+        <div class="clock-thumb">
+            <div class="clock-thumb-head hidden-xs">
+                <a href="@clock.Link">
+                    <img src="@clock.Image" alt="@clock.ImageAlt" />
+                </a>
+            </div>
+            <div class="clock-thumb-body">
+                <h3>@clock.Title</h3>
+                <p class="hidden-sm hidden-xs">@clock.Description</p>
+                <a href="@clock.Link" class="btn btn-primary" role="button">More Info</a>
+            </div>
+        </div>
+    }
+</div>

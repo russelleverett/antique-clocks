@@ -1,0 +1,35 @@
+@model System.Collections.Generic.IEnumerable<Clock>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>All Clocks</h3>
+<div>
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type(s)</th>
+                <th>Price</th>
+                <th>
+                    <a href="/admin/clocks/add" class="btn btn-sm btn-success">Add New Clock</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var clock in Model) {
+                <tr>
+                    <td>@clock.Number</td>
+                    <td>@clock.Name</td>
+                    <td>N/A</td>
+                    <td>@string.Format("{0:c}", clock.Price)</td>
+                    <td>
+                        <a href="/admin/clocks/edit/@clock.Id" class="btn btn-group-sm">Edit</a>
+                    </td>
+                </tr>
+             }
+        </tbody>
+    </table>
+</div>
+

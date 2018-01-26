@@ -1,0 +1,24 @@
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3" style="padding: 100px 0 100px 0">
+        @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Account/Login?returnUrl=" + ViewBag.returnUrl })) {
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(x => x.Username)
+                    @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                </div>
+                <br />
+                <div class="">
+                    @Html.LabelFor(x => x.Password)
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                </div>
+            </fieldset>
+            <br />
+            <input class="btn btn-lg btn-primary" type="submit" value="Sign in to your account" />
+        }
+    </div>
+</div>

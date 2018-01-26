@@ -1,0 +1,52 @@
+﻿<footer class="footer-basic-centered">
+    <p class="footer-company-motto">George's Antique Clocks</p>
+
+    <p class="footer-links">
+        <a href="index.htm">Home</a>
+        /
+        <a href="mailto:clocks@antique-clock.com?subject=Request Information">Contact</a>
+        <br /><br /> Email: clocks@antique-clock.com
+        <br /><br />
+        <a href="order.htm">Ordering Information</a>
+    </p>
+
+    <!-- PayPal Logo -->
+    <table border="0" cellpadding="10" cellspacing="0" align="center">
+        <tr>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">
+                </a>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <div id="mydiv">
+            <div class="alert alert-warning">
+                <h3>
+                    <strong>WARNING!</strong> All images and Content on this site are copyrighted. Theft of intellectual property and copyright infringement will be prosecuted to the fullest extent of the law.
+                </h3>
+            </div>
+        </div>
+    </p>
+    <p class="footer-company-name">
+        On the Web Since February 1999
+        <br>
+        (C) 1999 - 2017
+    </p>
+</footer>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            setTimeout(fade_out, 5000);
+            function fade_out() {
+                $('#mydiv').fadeOut().empty();
+            }
+            console.log('this happened');
+         });
+    </script>
+}
