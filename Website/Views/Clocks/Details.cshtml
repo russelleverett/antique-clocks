@@ -53,7 +53,7 @@
                 <div class="detail-description">@Model.Description</div>
                 <a href="#" class="strike-link">Click here to hear it strike</a>
                 <div class="detail-price">
-                    @(Model.Price != null ? string.Format("Price: {0:c}", Model.Price) : "SOLD")
+                    @(Model.IsSold ? "SOLD" : string.Format("Price: {0:c}", Model.Price))
                 </div>
             </div>
         </div>

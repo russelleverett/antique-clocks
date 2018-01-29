@@ -1,17 +1,17 @@
-﻿@model IEnumerable<ClockThumbModel>
+﻿@model IEnumerable<ClockFeatureModel>
 
-<div class="tile-container clearfix">
+<div id="tile-container">
     @foreach (var clock in Model) {
         <div class="clock-thumb">
-            <div class="clock-thumb-head hidden-xs">
-                <a href="@clock.Link">
-                    <img src="@clock.Image" alt="@clock.ImageAlt" />
+            <div class="clock-thumb-head">
+                <a href="/clocks/details/@clock.Id">
+                    <img src="/images/@clock.ImageId" alt="@clock.ImageAlt" />
                 </a>
             </div>
             <div class="clock-thumb-body">
-                <h3>@clock.Title</h3>
-                <p class="hidden-sm hidden-xs">@clock.Description</p>
-                <a href="@clock.Link" class="btn btn-primary" role="button">More Info</a>
+                <h3>@clock.Name</h3>
+                <p>@clock.Description</p>
+                <a href="/clocks/details/@clock.Id" class="btn btn-primary" role="button">Read More</a>
             </div>
         </div>
     }

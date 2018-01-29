@@ -11,14 +11,10 @@
   <ItemGroup>
     <Content Include="wwwroot\favicon.ico" />
     <Content Include="wwwroot\images\background.jpg" />
-    <Content Include="wwwroot\images\book-cover.jpg" />
     <Content Include="wwwroot\images\coming-soon.png" />
     <Content Include="wwwroot\images\delete.png" />
     <Content Include="wwwroot\images\GE035-1-Thumb.JPG" />
     <Content Include="wwwroot\images\GE036-1-Thumb.jpg" />
-    <Content Include="wwwroot\images\GE037-1-Thumb.jpg" />
-    <Content Include="wwwroot\images\GE038-1-Thumb.jpg" />
-    <Content Include="wwwroot\images\GE039-1-Thumb.jpg" />
     <Content Include="wwwroot\images\jumbotron-background.jpg" />
     <Content Include="wwwroot\templates\image-overview.html" />
   </ItemGroup>
@@ -27,11 +23,12 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 using Website.Infrastructure.Data.Entities;
 
 namespace Website.Areas.Admin.Models {
@@ -31,6 +32,8 @@ namespace Website.Areas.Admin.Models {
 
         [DisplayName("Image Files")]
         public List<IFormFile> FileUploads { get; set; }
+
+        public ClockFilters Filters { get; set; }
     }
 
     public class ClockEditModel {
@@ -64,5 +67,50 @@ namespace Website.Areas.Admin.Models {
         public List<IFormFile> FileUploads { get; set; }
 
         public dynamic Images { get; set; }
+
+        public ClockFilters Filters { get; set; }
+    }
+
+    public class ClockFilters {
+        public bool Lenzkirch { get; set; }
+
+        [DisplayName("Vienna Regulator")]
+        public bool ViennaRegulator { get; set; }
+
+        [DisplayName("Wall Clock")]
+        public bool WallClock { get; set; }
+
+        [DisplayName("Table Clock")]
+        public bool TableClock { get; set; }
+
+        [DisplayName("Miniature Clock")]
+        public bool MiniatureClock { get; set; }
+
+        [DisplayName("Grandfather Clock")]
+        public bool GrandfatherClock { get; set; }
+
+        public override string ToString() {
+            var sb = new StringBuilder();
+
+            sb.Append((Lenzkirch) ? "lenzkirch|" : "");
+            sb.Append((ViennaRegulator) ? "vienna|" : "");
+            sb.Append((WallClock) ? "wall|" : "");
+            sb.Append((TableClock) ? "table|" : "");
+            sb.Append((MiniatureClock) ? "miniature|" : "");
+            sb.Append((GrandfatherClock) ? "grandfather|" : "");
+
+            return sb.ToString().TrimEnd('|');
+        }
+
+        public static ClockFilters FromCollection(List<string> collection) {
+            return new ClockFilters {
+                Lenzkirch = collection.Contains("lenzkirch"),
+                ViennaRegulator = collection.Contains("vienna"),
+                WallClock = collection.Contains("wall"),
+                TableClock = collection.Contains("table"),
+                MiniatureClock = collection.Contains("miniature"),
+                GrandfatherClock = collection.Contains("grandfather")
+            };
+        }
     }
 }

@@ -5,6 +5,7 @@ using Website.Infrastructure.Services;
 using Website.Infrastructure.Data.Entities;
 using Website.Areas.Admin.Models;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Website.Areas.Admin.Controllers {
     [Area("Admin"), Authorize]
@@ -22,7 +23,8 @@ namespace Website.Areas.Admin.Controllers {
 
         public IActionResult Add() {
             return View(new ClockCreateModel {
-                Active = true
+                Active = true,
+                Filters = new ClockFilters()
             });
         }
 
@@ -41,7 +43,8 @@ namespace Website.Areas.Admin.Controllers {
                 Caveats = model.Caveats,
                 Description = model.Description,
                 Featured = model.Featured,
-                Active = model.Active
+                Active = model.Active,
+                Filters = model.Filters.ToString()
             };
             _context.Add(clock);
             _context.SaveChanges();
@@ -94,7 +97,8 @@ namespace Website.Areas.Admin.Controllers {
                     Description = clock.Description,
                     Active = clock.Active,
                     Images = resources,
-                    Featured = clock.Featured
+                    Featured = clock.Featured,
+                    Filters = ClockFilters.FromCollection(clock.FullFilters)
                 });
             }   
             return Redirect("/admin/clocks");
@@ -115,6 +119,7 @@ namespace Website.Areas.Admin.Controllers {
                 clock.Description = model.Description;
                 clock.Active = model.Active;
                 clock.Featured = model.Featured;
+                clock.Filters = model.Filters.ToString();
 
                 _context.SaveChanges();
             }

@@ -62,6 +62,42 @@
                 
             </div>
         </div>
+        <div class="row">
+            <fieldset>
+                <legend>Filters</legend>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.Lenzkirch)
+                        @Html.LabelFor(x => x.Filters.Lenzkirch)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.ViennaRegulator)
+                        @Html.LabelFor(x => x.Filters.ViennaRegulator)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.WallClock)
+                        @Html.LabelFor(x => x.Filters.WallClock)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.TableClock)
+                        @Html.LabelFor(x => x.Filters.TableClock)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.MiniatureClock)
+                        @Html.LabelFor(x => x.Filters.MiniatureClock)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.GrandfatherClock)
+                        @Html.LabelFor(x => x.Filters.GrandfatherClock)
+                    </div>
+                </div>
+            </fieldset>
+        </div>
         <hr />
         <div class="row">
             <div class="col-md-12">

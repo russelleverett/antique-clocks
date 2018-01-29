@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Website.Infrastructure.Data.Entities;
 using Website.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Website {
     public class Startup {
@@ -32,6 +26,9 @@ namespace Website {
             services.AddDbContext<DomainContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("Website"), opts => opts.EnableRetryOnFailure());
             });
+
+            // session
+            services.AddSession();
 
             // Add framework services.
             services.AddMvc();
@@ -60,7 +57,8 @@ namespace Website {
 
             app.UseStaticFiles();
 
-            //app.UseIdentity();
+            app.UseSession();
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions {
                 AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
                 AutomaticAuthenticate = true,

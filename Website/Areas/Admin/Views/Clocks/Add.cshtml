@@ -52,9 +52,34 @@
                         <input type="file" id="FileUploads" name="FileUploads" class="form-control" multiple />
                     </div>
                 </fieldset>
-                <div class="thumbs-panel">
-
-                </div>
+                <fieldset>
+                    <legend>Filters</legend>
+                    
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.Lenzkirch)
+                        @Html.LabelFor(x => x.Filters.Lenzkirch)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.ViennaRegulator)
+                        @Html.LabelFor(x => x.Filters.ViennaRegulator)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.WallClock)
+                        @Html.LabelFor(x => x.Filters.WallClock)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.TableClock)
+                        @Html.LabelFor(x => x.Filters.TableClock)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.MiniatureClock)
+                        @Html.LabelFor(x => x.Filters.MiniatureClock)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.GrandfatherClock)
+                        @Html.LabelFor(x => x.Filters.GrandfatherClock)
+                    </div>
+                </fieldset>
             </div>
         </div>
         <hr />

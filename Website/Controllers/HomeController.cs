@@ -1,60 +1,32 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Website.Models;
+using Website.Infrastructure.Services;
 
 namespace Website.Controllers {
     public class HomeController : Controller {
+        private IDomainContext _context;
+
+        public HomeController(IDomainContext context) {
+            _context = context;
+        }
+
         public IActionResult Index() {
-            var clocks = new List<ClockThumbModel>();
+            var clocks = new List<ClockFeatureModel>();
 
-            clocks.Add(new ClockThumbModel {
-                Link = "/clocks/GE035-1",
-                Image = "/images/GE035-1-Thumb.jpg",
-                ImageAlt = "French Gothic Cathedral Clock",
-                Title = "High Quality Clocks For Sale",
-                Description = "See this French Gothic Cathedral Clock, a Vienna table clocks with music and other fine clocks."
-            });
-
-            clocks.Add(new ClockThumbModel {
-                Link = "/clocks/GE036-1",
-                Image = "/images/GE036-1-Thumb.jpg",
-                ImageAlt = "30-Day Vienna Regulator Inlayed Case",
-                Title = "Vienna Regulators",
-                Description = "See Vienna Regulators by Felsing, Schonberger, Salfer, Becker, Lenzkirch, and others famous makers."
-            });
-
-            clocks.Add(new ClockThumbModel {
-                Link = "/book/order",
-                Image = "/images/book-cover.jpg",
-                ImageAlt = "book-cover",
-                Title = "Lenzkirch Clocks, the Unsigned Story",
-                Description = "My book is a technical study of Lenzkirch clocks like nothing ever published before.  It is a must have book for the Lenzkirch Clock collector."
-            });
-
-            clocks.Add(new ClockThumbModel {
-                Link = "/clocks/GE039-1",
-                Image = "/images/GE039-1-Thumb.jpg",
-                ImageAlt = "Lenzkirch Model 310 Jeweler's Regulator",
-                Title = "Lenzkirch Clocks For Sale",
-                Description = "See Lenzkirch clocks for sale along with many precise regulators"
-            });
-
-            clocks.Add(new ClockThumbModel {
-                Link = "/clocks/GE038-1",
-                Image = "/images/GE038-1-Thumb.jpg",
-                ImageAlt = "John Knibb Hodded Lantern",
-                Title = "John Knibb Hooded Lantern Ca. 1680",
-                Description = "See this Rare John Knibb Hooded Lantern Clock."
-            });
-
-            clocks.Add(new ClockThumbModel {
-                Link = "/clocks/GE037-1",
-                Image = "/images/GE037-1-Thumb.jpg",
-                ImageAlt = "J. Salfer, Wien Calendar",
-                Title = "Johann Salfer Calendar",
-                Description = "See this one-of-a-kind J. Salfer Wien Calendar clock"
-            });
+            var featuredClocks = _context.Clocks.Where(p => p.Featured);
+            foreach (var feature in featuredClocks) {
+                var image = _context.Resources.FirstOrDefault(p => p.ClockId == feature.Id && p.Default);
+                clocks.Add(new ClockFeatureModel {
+                    Id = feature.Id,
+                    ImageId = image?.Id,
+                    ImageAlt = image?.Name,
+                    Name = feature.Name,
+                    Description = new string(feature.Description.Take(100).ToArray()) + "..."
+                });
+            }
 
             return View(clocks);
         }

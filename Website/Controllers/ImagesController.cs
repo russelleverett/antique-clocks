@@ -17,20 +17,20 @@ namespace Website.Controllers {
         }
 
         public IActionResult Index(int id = 0) {
-            // check the referrer
-            var accepted = _config.GetValue<string>("Referer");
+            // check the referrer is acceptes
             var referrer = Request.Headers["Host"].ToString();
+            var accepted = _config.GetValue<string>("Referer");
             if (referrer != accepted && !referrer.Contains("pintrest.com")) {
                 return Json(new {
                     message = "These images are the property of antique-clock.com."
                 });
             }
-            //else {
-            //    var filePath = @"./wwwroot/images/coming-soon.png";
-            //    using (var ms = new MemoryStream(System.IO.File.ReadAllBytes(filePath))) {
-            //        return File(ms.ToArray(), "image/png", "coming-soon.png");
-            //    }
-            //}
+            else if (referrer.Contains("localhost")) {
+                var filePath = @"./wwwroot/images/coming-soon.png";
+                using (var ms = new MemoryStream(System.IO.File.ReadAllBytes(filePath))) {
+                    return File(ms.ToArray(), "image/png", "coming-soon.png");
+                }
+            }
 
             var resource = _context.Resources.FirstOrDefault(p => p.Id == id);
             if (resource != null) {

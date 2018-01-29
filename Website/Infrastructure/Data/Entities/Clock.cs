@@ -13,6 +13,7 @@ namespace Website.Infrastructure.Data.Entities {
         public decimal? Price { get; set; }
         public bool Active { get; set; }
         public bool Featured { get; set; }
+        public string Filters { get; set; }
         public virtual IEnumerable<Resource> Resources { get; set; }
 
         [NotMapped]
@@ -42,6 +43,27 @@ namespace Website.Infrastructure.Data.Entities {
                 }
                 else caveats.Add("None");
                 return caveats;
+            }
+        }
+
+        [NotMapped]
+        public List<string> FullFilters {
+            get {
+                var filters = new List<string>();
+                if (Filters != null) {
+                    foreach (var filter in Filters.Split('|')) {
+                        if (!string.IsNullOrEmpty(filter))
+                            filters.Add(filter);
+                    }
+                }
+                return filters;
+            }
+        }
+
+        [NotMapped]
+        public bool IsSold {
+            get {
+                return (Price == null || Price == default(decimal));
             }
         }
     }
