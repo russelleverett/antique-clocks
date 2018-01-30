@@ -10,10 +10,15 @@
 
     <h4>Image Tests</h4>
     <div>
-        <p>Image should render on the page but the link should return a 404.</p>
-        <a href="/images/3" target="_blank">
-            <img src="/images/3" alt="missing-image" />
-        </a>
+        <p>Multiple-Image should render on the page but the links should return a 404.</p>
+        <div style="display: flex; justify-content: space-evenly;">
+            <a href="/images/3" target="_blank">
+                <img src="/images/3" alt="missing-image" />
+            </a>
+            <a href="/images/3" target="_blank">
+                <img src="/images/3" alt="missing-image" />
+            </a>
+        </div>
     </div>
     <hr />
 

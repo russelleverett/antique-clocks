@@ -18,23 +18,31 @@ namespace Website.Controllers {
         }
 
         public IActionResult Index(int id = 0) {
-            var accepted = new List<string> { "pintrest.com", "facebook.com" };
-            accepted.Add(_config.GetValue<string>("Referer"));
+            var acceptedHosts = new List<string> { "pintrest.com", "facebook.com" };
+            acceptedHosts.Add(_config.GetValue<string>("Host"));
 
-            // check the referrer is acceptes
-            var referrer = Request.Headers["Host"].ToString();
-            if (!accepted.Contains(referrer)) {
+            // check the host is acceptes
+            var host = Request.Headers["Host"].ToString();
+            if (!acceptedHosts.Contains(host)) {
                 return Json(new {
                     message = "These images are the property of antique-clock.com."
                 });
             }
-            else if (referrer.Contains("localhost")) {
+            
+            // check that it's not being accessed directly
+            var referer = Request.Headers["Referer"].ToString();
+            if (string.IsNullOrEmpty(referer) || referer.ToLower().Contains("/images/"))
+                return new NotFoundResult();
+
+            // local hosts so serve the default image
+            if (host.Contains("localhost")) {
                 var filePath = @"./wwwroot/images/coming-soon.png";
                 using (var ms = new MemoryStream(System.IO.File.ReadAllBytes(filePath))) {
                     return File(ms.ToArray(), "image/png", "coming-soon.png");
                 }
             }
 
+            // serve the image
             var resource = _context.Resources.FirstOrDefault(p => p.Id == id);
             if (resource != null) {
                 return File(resource.File, resource.ContentType, resource.FileName);
