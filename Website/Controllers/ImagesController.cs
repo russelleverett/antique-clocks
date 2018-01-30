@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Website.Infrastructure.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Website.Controllers {
     public class ImagesController : Controller {
@@ -17,10 +18,12 @@ namespace Website.Controllers {
         }
 
         public IActionResult Index(int id = 0) {
+            var accepted = new List<string> { "pintrest.com", "facebook.com" };
+            accepted.Add(_config.GetValue<string>("Referer"));
+
             // check the referrer is acceptes
             var referrer = Request.Headers["Host"].ToString();
-            var accepted = _config.GetValue<string>("Referer");
-            if (referrer != accepted && !referrer.Contains("pintrest.com")) {
+            if (!accepted.Contains(referrer)) {
                 return Json(new {
                     message = "These images are the property of antique-clock.com."
                 });

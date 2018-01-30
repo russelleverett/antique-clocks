@@ -34,10 +34,7 @@ namespace Website.Controllers {
                     ImageId = imageId,
                     ImageName = image?.Name,
                     Number = clock.Number,
-                    PintrestLink = string.Format("http://www.pinterest.com/pin/create/button/?url={0}&media={1}&description={1}",
-                    WebUtility.UrlEncode("http://antique-clock.com"),
-                    WebUtility.UrlEncode(string.Format("http://antique-clock.com/images/{0}", imageId)),
-                    WebUtility.UrlEncode(clock.Name + " at antique-clock.com"))
+                    PintrestLink = clock.PintrestLink(imageId)
                 });
             }
 

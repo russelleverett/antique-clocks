@@ -8,8 +8,11 @@
     <!-- Header -->
     <div class="row detail-title">
         <h3>@Model.Name #@Model.Number</h3>
-        <div style="">
-            social media links
+        <div style="display: inline-flex;">
+            <a data-pin-do="buttonPin" href="@Model.PintrestLink(defaultImage?.Id)" style="text-decoration: none; margin-right: 5px;">
+                <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+            </a>
+            <div class="fb-like" data-href="http://www.antique-clock.com/images/@defaultImage?.Id" data-width="200" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
     </div>
     

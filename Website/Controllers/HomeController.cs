@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Website.Models;
@@ -29,6 +28,10 @@ namespace Website.Controllers {
             }
 
             return View(clocks);
+        }
+
+        public IActionResult Test() {
+            return View();
         }
     }
 }

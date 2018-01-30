@@ -1,0 +1,64 @@
+﻿<div style="text-align: center">
+    <div class="clearfix" style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
+        <div style="float: left">
+            <h3>All Clocks</h3>
+        </div>
+        <div style="float: right; padding-top: 20px;">
+            <a href="/admin/account/logout" class="btn btn-sm btn-info">Log Out</a>
+        </div>
+    </div>
+
+    <h4>Image Tests</h4>
+    <div>
+        <p>Image should render on the page but the link should return a 404.</p>
+        <a href="/images/3" target="_blank">
+            <img src="/images/3" alt="missing-image" />
+        </a>
+    </div>
+    <hr />
+
+    <h4>Featured Tests:</h4>
+    <div>
+        <p>For visual appearances</p>
+        <div id="tile-container">
+            <div class="clock-thumb">
+                <div class="clock-thumb-head">
+                    <a href="/clocks/details/1">
+                        <img src="/images/1" alt="missing image" />
+                    </a>
+                </div>
+                <div class="clock-thumb-body">
+                    <h3>Some Random Clock Name</h3>
+                    <p>Some random clock description</p>
+                    <a href="/clocks/details/1" class="btn btn-primary" role="button">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <h4>List All Tests:</h4>
+    <div>
+        <p>For visial appearances</p>
+        <div id="all-clocks-container">
+            <div class="clock-panel">
+                <div class="clock-panel-header">
+                    <a href="/clocks/details/1">
+                        <img src="/images/1" alt="missing image" />
+                    </a>
+                </div>
+                <div class="clock-panel-footer">
+                    <div class="clock-panel-title">
+                        Some Random Clock Name
+                        <div class="clock-panel-number">
+                            - #RNA001
+                        </div>
+                    </div>
+                </div>
+                <a data-pin-do="buttonPin" href="http://link-to-pintest.com" class="pintest-button">
+                    <img src="http://assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

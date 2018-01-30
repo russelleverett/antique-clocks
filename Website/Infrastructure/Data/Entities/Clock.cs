@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Net;
 
 namespace Website.Infrastructure.Data.Entities {
     public class Clock : IEntity {
@@ -65,6 +66,13 @@ namespace Website.Infrastructure.Data.Entities {
             get {
                 return (Price == null || Price == default(decimal));
             }
+        }
+
+        public string PintrestLink(int? imageId) {
+            return string.Format("http://www.pinterest.com/pin/create/button/?url={0}&media={1}&description={1}",
+                WebUtility.UrlEncode("http://antique-clock.com"),
+                WebUtility.UrlEncode(string.Format("http://antique-clock.com/images/{0}", imageId ?? 0)),
+                WebUtility.UrlEncode(Name + " at antique-clock.com"));
         }
     }
 }
