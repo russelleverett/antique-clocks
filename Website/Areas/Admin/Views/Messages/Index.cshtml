@@ -1,0 +1,31 @@
+@model IEnumerable<Messages>
+
+<div>
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>
+                    <a href="/admin/messages/add" class="btn btn-sm btn-success">Add Message</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model) {
+                <tr>
+                    <td>@message.Id</td>
+                    <td>@message.Message</td>
+                    <td>@message.StartDate.Date</td>
+                    <td>@message.EndDate?.Date</td>
+                    <td>
+                        <a href="/admin/messages/edit/@message.Id" class="btn btn-sm btn-info">Edit</a>
+                        <a href="/admin/messages/delete/@message.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

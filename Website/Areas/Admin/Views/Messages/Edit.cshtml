@@ -1,0 +1,34 @@
+@model Messages
+
+<div style="padding: 50px">
+    @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Messages/Edit", enctype = "multipart/form-data" })) {
+        @Html.HiddenFor(x => x.Id)
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <fieldset>
+                    <legend>Message Details:</legend>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Message)
+                        @Html.TextBoxFor(x => x.Message, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.StartDate)
+                        @Html.EditorFor(x => x.StartDate, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.EndDate)
+                        @Html.EditorFor(x => x.EndDate, new { @class = "form-control" })
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12 clearfix">
+                <input type="submit" class="btn btn-lg btn-success pull-right" value="Update Message" />
+                <a href="/admin/messages" class="btn btn-danger btn-lg">Cancel</a>
+            </div>
+        </div>
+    }
+</div>
+

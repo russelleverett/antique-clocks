@@ -11,10 +11,9 @@
   <ItemGroup>
     <Content Include="wwwroot\favicon.ico" />
     <Content Include="wwwroot\images\background.jpg" />
+    <Content Include="wwwroot\images\book-cover.jpg" />
     <Content Include="wwwroot\images\coming-soon.png" />
     <Content Include="wwwroot\images\delete.png" />
-    <Content Include="wwwroot\images\GE035-1-Thumb.JPG" />
-    <Content Include="wwwroot\images\GE036-1-Thumb.jpg" />
     <Content Include="wwwroot\images\jumbotron-background.jpg" />
     <Content Include="wwwroot\templates\image-overview.html" />
   </ItemGroup>
@@ -38,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Account\" />
-    <Folder Include="Areas\Admin\Views\Shared\Partials\" />
+    <Folder Include="Areas\Admin\Views\Messages\" />
     <Folder Include="Views\Clocks\" />
   </ItemGroup>
 

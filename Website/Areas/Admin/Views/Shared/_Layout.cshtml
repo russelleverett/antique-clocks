@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Unsigned Lenzkirch, Lenzkirch clocks, Dating Lenzkirch clocks, Lenzkirch Serial numbers, Beha, Wenzel Schonberger, Alt uhren, uhr, Lenzkirch uhren, LeCoultre, LeCoultre Atmos, Atmos 540, Gustav Becker, Antique clocks, wall clocks, cuckoo clock, Year Running Vienna, European clocks, Grandfather Clocks, Music Clocks, Waltham Grandfather clock, wall clocks, marble clocks, French clocks, porcelain, bronze, English Clocks, John Knibb, Joseph Knibb, Thomas Tompion, Huntsville Alabama, Fayetteville Tennessee" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ek+Mukta">
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <title>George's Antique Clocks</title>
+    @RenderSection("SectionHeader", false)
+</head>
+<body>
+    <div class="site-title">
+        <h1>George's Antique Clocks</h1>
+    </div>
+
+    <div class="container">
+        @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_AdminHeader.cshtml")
+
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

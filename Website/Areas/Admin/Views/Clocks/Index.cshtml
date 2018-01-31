@@ -1,16 +1,8 @@
-@model System.Collections.Generic.IEnumerable<Clock>
+@model IEnumerable<Clock>
 @{
     ViewData["Title"] = "Index";
 }
 
-<div class="clearfix" style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
-    <div style="float: left">
-        <h3>All Clocks</h3>
-    </div>
-    <div style="float: right; padding-top: 20px;">
-        <a href="/admin/account/logout" class="btn btn-sm btn-info">Log Out</a>
-    </div>
-</div>
 <div>
     <table class="table table-striped table-responsive">
         <thead>
@@ -21,7 +13,7 @@
                 <th>Price</th>
                 <th>Featured</th>
                 <th>
-                    <a href="/admin/clocks/add" class="btn btn-sm btn-success">Add New Clock</a>
+                    <a href="/admin/clocks/add" class="btn btn-sm btn-success">Add Old Clock</a>
                 </th>
             </tr>
         </thead>
@@ -41,11 +33,3 @@
         </tbody>
     </table>
 </div>
-
-@section Scripts {
-    <script>
-        // PayPal pop up script
-        ; (function (a, t, o, m, s) { a[m] = a[m] || []; a[m].push({ t: new Date().getTime(), event: 'snippetRun' }); var f = t.getElementsByTagName(o)[0], e = t.createElement(o), d = m !== 'paypalDDL' ? '&m=' + m : ''; e.async = !0; e.src = 'https://www.paypal.com/tagmanager/pptm.js?id=' + s + d; f.parentNode.insertBefore(e, f); })(window, document, 'script', 'paypalDDL', '3ef56d32-5c20-11e7-8a78-9da7c32b725e');
-    </script>
-}
-

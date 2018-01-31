@@ -1,4 +1,6 @@
-﻿namespace Website.Models {
+﻿using System.Collections.Generic;
+
+namespace Website.Models {
     public class ClockFeatureModel {
         public int Id { get; set; }
         public int? ImageId { get; set; }
@@ -14,5 +16,10 @@
         public int? ImageId { get; set; }
         public string ImageName { get; set; }
         public string PintrestLink { get; set; }
+    }
+
+    public class HomePageModel {
+        public IEnumerable<string> Messages { get; set; }
+        public IEnumerable<ClockFeatureModel> FeaturedClocks { get; set; }
     }
 }

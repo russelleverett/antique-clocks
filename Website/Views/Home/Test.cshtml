@@ -1,10 +1,49 @@
 ﻿<div style="text-align: center">
-    <div class="clearfix" style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
-        <div style="float: left">
-            <h3>All Clocks</h3>
+    <!-- Messages -->
+    <div>
+        <div class="alert alert-info fade in alert-dismissable" style="margin-bottom: 5px;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            This is a dismissable message.
         </div>
-        <div style="float: right; padding-top: 20px;">
-            <a href="/admin/account/logout" class="btn btn-sm btn-info">Log Out</a>
+        <div class="alert alert-info fade in alert-dismissable" style="margin-bottom: 5px;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            This is another one.
+        </div>
+    </div>
+    <hr />
+
+    <!-- Jumbotron -->
+    <div class="jumbotron" style="text-align: left;">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h3>Welcome to George's Antique Clocks</h3>
+                <p>My book <span style="font-weight: bold; font-style: italic;">Lenzkirch Clocks, the Unsigned Story</span> is available! Quantities are limited.<p>
+                    <div style="font-weight: bold; font-style: italic; color: darkcyan;">
+                        "I got your book today and I am very impressed. I believe the evidence presented makes your case. And I own more Lenzkirch clocks now than I did before I got your book. Your book is an outstanding contribution
+                        to the world of horology and horology publishing. Well done!"
+                    </div>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <img src="~/images/book-cover.jpg" alt="book-cover" width="150">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Learn More</a>
+        </div>
+        <div id="search" class="row" style="margin-top: 20px;">
+            <div class="fb-like" data-href="http://www.antique-clock.com" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>    
+            <script>
+            (function() {
+                var cx = '012462125409564332886:l_jfxd_nygg';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+            </script>
+            <gcse:search></gcse:search>
         </div>
     </div>
 
@@ -18,6 +57,27 @@
             <a href="/images/3" target="_blank">
                 <img src="/images/3" alt="missing-image" />
             </a>
+        </div>
+    </div>
+    <hr />
+
+    <h4>Home page paragraph:</h4>
+    <div class="row" style="text-align: left; padding: 0 50px;">
+        <h3>High Quality Antique Clocks for Sale</h3>
+        <p>
+            This is Lenzkirch Clocks Central on the Internet.  You can find out anything Lenzkirch here.  If you do not see what you are looking for,
+            send me an email and we will find it for you.  Between myself and my friends we have gathered thousands of pages
+            of data and pictures of Lenzkirch clocks.  Click the Contact link below.
+        </p>
+        <p>
+            You will find only the finest quality clock ever made on this web site.  If you want a cheap clock that does not run there is an unlimited number
+            of auctions available.
+        </p>
+        <div class="hidden-sm hidden-xs">
+            <a class="btn btn-primary btn-lg" href="/clocks" role="button">Click Here To See All Clocks For Sale on One Page</a>
+        </div>
+        <div class="hidden-md hidden-lg">
+            <a class="btn btn-primary btn-lg" href="/clocks" role="button">Browse All</a>
         </div>
     </div>
     <hr />
