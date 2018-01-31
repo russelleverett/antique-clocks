@@ -53,9 +53,15 @@ namespace Website.Areas.Admin.Controllers {
             if (message == null)
                 return Redirect("/admin/messages");
 
-            message.Message = model.Message;
-            message.StartDate = model.StartDate;
-            message.EndDate = model.EndDate;
+            // remove or update accordingly
+            if (model.Delete) {
+                _context.Delete<Messages>(message.Id);
+            }
+            else {
+                message.Message = model.Message;
+                message.StartDate = model.StartDate;
+                message.EndDate = model.EndDate;
+            }
             _context.SaveChanges();
 
             return Redirect("/admin/messages");

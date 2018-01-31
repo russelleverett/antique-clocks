@@ -13,5 +13,7 @@ namespace Website.Infrastructure.Data.Entities {
         public DateTime StartDate { get; set; }
         [DisplayName("End Date")]
         public DateTime? EndDate { get; set; }
+        [NotMapped]
+        public bool Delete { get; set; }
     }
 }

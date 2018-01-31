@@ -1,14 +1,14 @@
 @model IEnumerable<Messages>
 
-<div>
+<div class="container-fluid">
     <table class="table table-striped table-responsive">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Message</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>
+                <th class="col-md-2">Start Date</th>
+                <th class="col-md-2">End Date</th>
+                <th class="col-md-2">
                     <a href="/admin/messages/add" class="btn btn-sm btn-success">Add Message</a>
                 </th>
             </tr>
@@ -18,14 +18,17 @@
                 <tr>
                     <td>@message.Id</td>
                     <td>@message.Message</td>
-                    <td>@message.StartDate.Date</td>
-                    <td>@message.EndDate?.Date</td>
+                    <td>@message.StartDate.ToString("dd-MM-yyyy")</td>
+                    <td>@(message.EndDate?.ToString("dd-MM-yyyy") ?? "N/A")</td>
                     <td>
-                        <a href="/admin/messages/edit/@message.Id" class="btn btn-sm btn-info">Edit</a>
-                        <a href="/admin/messages/delete/@message.Id" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="/admin/messages/edit/@message.Id" class="btn btn-sm"><span class="glyphicon glyphicon-edit">&nbsp;Edit</span></a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    
+}
