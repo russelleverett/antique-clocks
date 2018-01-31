@@ -1,7 +1,7 @@
 @model Clock
-
 @{
     var defaultImage = Model.Resources.FirstOrDefault(p => p.Default);
+    ViewBag.MenuId = "#clocks";
 }
 
 <div id="detail-container">

@@ -1,5 +1,9 @@
 @model IEnumerable<ClockBrowseModel>
 
+@{
+    ViewBag.MenuId = "#clocks";
+}
+
 <div id="all-clocks-container">
     @if (Model.Count() > 0) {
         @foreach (var clock in Model) {
@@ -29,4 +33,3 @@
         </div>
     }
 </div>
-

@@ -29,5 +29,8 @@
     </div>
 
     @RenderSection("Scripts", false)
+    <script>
+        $('@ViewBag.MenuId').addClass("active");
+    </script>
 </body>
 </html>

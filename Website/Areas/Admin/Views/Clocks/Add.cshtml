@@ -1,4 +1,7 @@
 @model ClockCreateModel
+@{
+    ViewBag.MenuId = "#clocks";
+}
 
 <div style="padding: 50px">
     @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Clocks/Add", enctype = "multipart/form-data" })) {

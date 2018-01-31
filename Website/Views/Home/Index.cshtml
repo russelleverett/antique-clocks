@@ -1,5 +1,9 @@
 ﻿@model HomePageModel
 
+@{
+    ViewBag.MenuId = "#home";
+}
+
 <!-- Messages -->
 <div style="margin-top: 5px;">
     @foreach (var message in Model.Messages) {

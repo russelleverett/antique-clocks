@@ -1,4 +1,7 @@
 @model Messages
+@{
+    ViewBag.MenuId = "#messages";
+}
 
 <div style="padding: 50px">
     @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Messages/Edit", enctype = "multipart/form-data", id = "editForm" })) {
