@@ -263,7 +263,7 @@ body {
         }
 
         #detail-container .gallery-container .main img {
-            height: 450px;
+            max-height: 450px;
             width: auto;
             margin: auto;
         }
@@ -283,8 +283,7 @@ body {
         }
 
     #detail-container .detail-details {
-        border: 2px solid #fff;
-        border-radius: 4px;
+        border-top: 2px solid #fff;
         margin: 20px 20px 0 20px;
         padding-bottom: 15px;
         font-style: italic;

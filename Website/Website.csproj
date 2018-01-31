@@ -39,6 +39,11 @@
     <Folder Include="Areas\Admin\Views\Account\" />
     <Folder Include="Areas\Admin\Views\Messages\" />
     <Folder Include="Views\Clocks\" />
+    <Folder Include="Views\Book\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Links\" />
+    <Folder Include="Views\Services\" />
+    <Folder Include="Views\Parts\" />
   </ItemGroup>
 
 </Project>
