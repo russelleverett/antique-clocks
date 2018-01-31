@@ -13,11 +13,11 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(x => x.StartDate)
-                        @Html.EditorFor(x => x.StartDate, new { @class = "form-control" })
+                        <input type="date" id="StartDate" name="StartDate" class="form-control" value="@Model.StartDate.ToString("yyyy-MM-dd")" />
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(x => x.EndDate)
-                        @Html.EditorFor(x => x.EndDate, new { @class = "form-control" })
+                        <input type="date" id="EndDate" name="EndDate" class="form-control" value="@Model.EndDate?.ToString("yyyy-MM-dd")" />
                     </div>
                 </fieldset>
             </div>
