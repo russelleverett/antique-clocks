@@ -1,0 +1,4 @@
+﻿<div id="ValidationResults" class="alert alert-danger" @if (ViewData.ModelState.IsValid) { <text> style="display: none;" </text>   }>
+    <strong>Validation Errors</strong></br />
+    @Html.ValidationSummary()
+</div>

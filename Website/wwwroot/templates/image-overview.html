@@ -1,8 +1,8 @@
 ﻿<div class="image-edit-container" ng-show="items.length > 0">
     <div ng-repeat="resource in items" id="box-{{ resource.id }}" class="image-edit-box" ng-click="removeImage( resource.id )">
-        <img src="/images/{{ resource.id }}" alt="{{ resource.fileName }}" />
+        <img src="/images/{{ resource.id }}?size=150" alt="{{ resource.fileName }}" />
         <div class="image-edit-overlay">
             <img src="/images/delete.png" />
-        </div> 
+        </div>
     </div>
 </div>

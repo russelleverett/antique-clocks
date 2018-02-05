@@ -162,13 +162,15 @@ body {
     border-style: dashed;
     border-radius: 10px;
     padding: 10px;
-    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .image-edit-box {
     margin: 0 10px 0 10px;
     position: relative;
-    cursor: pointer
+    cursor: pointer;
+    margin-bottom: 5px;
 }
 
     .image-edit-box:hover > div {

@@ -6,6 +6,13 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3" style="padding: 100px 0 100px 0">
         @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Account/Login?returnUrl=" + ViewBag.returnUrl })) {
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("~/Views/Shared/_ValidationSummary.cshtml")
+                </div>
+            </div>
+
+
             <fieldset>
                 <div class="">
                     @Html.LabelFor(x => x.Username)

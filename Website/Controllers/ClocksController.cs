@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Website.Models;
 using System.Net;
 using Website.Infrastructure.Services;
+using Website.Infrastructure.Data.Entities;
 
 namespace Website.Controllers {
     public class ClocksController : Controller {
@@ -45,7 +46,8 @@ namespace Website.Controllers {
             // get the clock
             var clock = _context.Clocks.FirstOrDefault(p => p.Id == id);
             if (clock != null) {
-                clock.Resources = _context.Resources.Where(p => p.ClockId == clock.Id).ToList();
+                clock.Resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image).ToList();
+                clock.ClockAudio = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.FileType == FileType.Audio);
                 return View(clock);
             }
 

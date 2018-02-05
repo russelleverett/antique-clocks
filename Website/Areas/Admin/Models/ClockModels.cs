@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Website.Infrastructure.Data.Entities;
 
 namespace Website.Areas.Admin.Models {
     public class ClockCreateModel {
@@ -34,6 +33,9 @@ namespace Website.Areas.Admin.Models {
         public List<IFormFile> FileUploads { get; set; }
 
         public ClockFilters Filters { get; set; }
+
+        [DisplayName("Audio File")]
+        public IFormFile AudioUpload { get; set; }
     }
 
     public class ClockEditModel {
@@ -69,6 +71,9 @@ namespace Website.Areas.Admin.Models {
         public dynamic Images { get; set; }
 
         public ClockFilters Filters { get; set; }
+
+        [DisplayName("Audio File")]
+        public IFormFile AudioUpload { get; set; }
     }
 
     public class ClockFilters {

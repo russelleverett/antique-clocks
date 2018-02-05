@@ -5,6 +5,11 @@ using System.Reflection;
 using Website.Infrastructure.Extensions;
 
 namespace Website.Infrastructure.Data.Entities {
+    public enum FileType {
+        Image = 0,
+        Audio = 1
+    }
+
     public class Resource : IEntity {
         public int Id { get; set; }
         public int ClockId { get; set; }
@@ -14,6 +19,7 @@ namespace Website.Infrastructure.Data.Entities {
         public byte[] File { get; set; }
         public bool Active { get; set; }
         public bool Default { get; set; }
+        public FileType FileType { get; set; }
 
         public HtmlString ImageTag(dynamic props = null) {
             // build the property collection

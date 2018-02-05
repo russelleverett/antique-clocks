@@ -20,12 +20,10 @@
     <div class="row gallery-container container-fluid">
         <div class="col-md-7 main">
             <img src="/images/@defaultImage?.Id" id="main-img" />
-            @*<a href=""></a>*@
         </div>
         <div class="col-md-5 thumbs">
             @foreach (var image in Model.Resources) {
                 <img src="/images/@image.Id" onmouseover="swapImage('/images/@image.Id')" />
-                @*<a href="/images/@image.Id"></a>*@
             }
             <br />
             <h4>Click the pictures for max resolution.</h4>
@@ -52,7 +50,9 @@
             <div class="col-md-6 col-lg-offset-1" style="padding: 10px;">
                 <div class="detail-header">Description</div>
                 <div class="detail-description">@Model.Description</div>
-                <a href="#" class="strike-link">Click here to hear it strike</a>
+                @if (Model.ClockAudio != null) {
+                    <a href="~/images/@Model.ClockAudio.Id" class="strike-link">Click here to hear it strike</a>
+                }
                 <div class="detail-price">
                     @(Model.IsSold ? "SOLD" : string.Format("Price: {0:c}", Model.Price))
                 </div>

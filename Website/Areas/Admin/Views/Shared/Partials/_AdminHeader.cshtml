@@ -1,12 +1,21 @@
 <div class="navbar navbar-inverse">
     <div class="container-fluid">
-        <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li id="clocks"><a href="/admin/clocks">Clocks</a></li>
-            <li id="messages"><a href="/admin/messages">Messages</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin/account/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-        </ul>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#admin-menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="admin-menu">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li id="clocks"><a href="/admin/clocks">Clocks</a></li>
+                <li id="messages"><a href="/admin/messages">Messages</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/admin/account/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div>
     </div>
 </div>

@@ -68,6 +68,9 @@ namespace Website.Infrastructure.Data.Entities {
             }
         }
 
+        [NotMapped]
+        public Resource ClockAudio { get; set; }
+
         public string PintrestLink(int? imageId) {
             return string.Format("http://www.pinterest.com/pin/create/button/?url={0}&media={1}&description={1}",
                 WebUtility.UrlEncode("http://antique-clock.com"),

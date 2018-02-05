@@ -7,6 +7,12 @@
     @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Messages/Edit", enctype = "multipart/form-data", id = "editForm" })) {
         @Html.HiddenFor(x => x.Id)
         @Html.HiddenFor(x => x.Delete)
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("~/Views/Shared/_ValidationSummary.cshtml")
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <fieldset>
