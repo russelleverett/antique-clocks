@@ -43,18 +43,9 @@ namespace Website {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            //if (env.IsDevelopment()) {
-            //    app.UseDeveloperExceptionPage();
-            //    app.UseBrowserLink();
-            //}
-            //else {
-            //    app.UseExceptionHandler("/Home/Error");
-            //}
-
-            // TODO: Put this back
-            app.UseDeveloperExceptionPage();
-            app.UseBrowserLink();
-
+            app.UseExceptionHandler("/Home/Error");
+            app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+            
             app.UseStaticFiles();
 
             app.UseSession();

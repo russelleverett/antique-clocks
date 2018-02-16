@@ -136,8 +136,8 @@ namespace Website.Areas.Admin.Controllers {
                 clock.Number = model.Number;
                 clock.Name = model.Name;
                 clock.Price = model.Price;
-                clock.Features = model.Features.TrimEnd('\r', '\n');
-                clock.Caveats = model.Caveats.TrimEnd('\r', '\n');
+                clock.Features = model.Features?.TrimEnd('\r', '\n');
+                clock.Caveats = model.Caveats?.TrimEnd('\r', '\n');
                 clock.Description = model.Description;
                 clock.Active = model.Active;
                 clock.Featured = model.Featured;

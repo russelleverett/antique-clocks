@@ -44,5 +44,9 @@ namespace Website.Controllers {
         public IActionResult Test() {
             return View();
         }
+
+        public IActionResult Error(int statusCode = 0) {
+            return View();
+        }
     }
 }
