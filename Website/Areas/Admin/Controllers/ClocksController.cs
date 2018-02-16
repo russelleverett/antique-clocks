@@ -119,7 +119,8 @@ namespace Website.Areas.Admin.Controllers {
                     Active = clock.Active,
                     Images = resources,
                     Featured = clock.Featured,
-                    Filters = ClockFilters.FromCollection(clock.FullFilters)
+                    Filters = ClockFilters.FromCollection(clock.FullFilters),
+                    BuyNowId = clock.BuyNowId
                 });
             }   
             return Redirect("/admin/clocks");
@@ -141,6 +142,7 @@ namespace Website.Areas.Admin.Controllers {
                 clock.Active = model.Active;
                 clock.Featured = model.Featured;
                 clock.Filters = model.Filters.ToString();
+                clock.BuyNowId = model.BuyNowId;
 
                 _context.SaveChanges();
             }

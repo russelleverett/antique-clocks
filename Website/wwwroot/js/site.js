@@ -17,7 +17,7 @@ function imageOverview() {
         }
 
         $scope.defaultImage = function (id) {
-            $http.post('/images/default/' + id).then(function () {
+            $http.post('/images/default/' + id).then(function (response) {
                 $scope.items = angular.copy(response.data);
                 alert("Image with ID: " + id + " has been made the default image.");
             });

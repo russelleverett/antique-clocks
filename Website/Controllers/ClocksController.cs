@@ -21,8 +21,10 @@ namespace Website.Controllers {
             foreach (var clock in clocks) {
                 // filter results
                 if (filter != null) {
-                    if (filter.Equals("sold") && !clock.IsSold)
-                        continue;
+                    if (filter.Contains("sold")) {
+                        if(!clock.IsSold)
+                            continue;
+                    }   
                     else if (!clock.Filters.Contains(filter))
                         continue;
                 }
