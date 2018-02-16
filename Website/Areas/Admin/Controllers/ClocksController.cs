@@ -39,8 +39,8 @@ namespace Website.Areas.Admin.Controllers {
                 Name = model.Name,
                 Price = model.Price,
                 BuyNowId = model.BuyNowId,
-                Features = model.Features,
-                Caveats = model.Caveats,
+                Features = model.Features.TrimEnd('\r', '\n'),
+                Caveats = model.Caveats.TrimEnd('\r', '\n'),
                 Description = model.Description,
                 Featured = model.Featured,
                 Active = model.Active,
@@ -104,7 +104,8 @@ namespace Website.Areas.Admin.Controllers {
             if (clock != null) {
                 var resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image).Select(p => new {
                     id = p.Id,
-                    fileName = p.FileName
+                    fileName = p.FileName,
+                    isDefault = p.Default
                 }).ToList();
 
                 return View(new ClockEditModel {
@@ -134,8 +135,8 @@ namespace Website.Areas.Admin.Controllers {
                 clock.Number = model.Number;
                 clock.Name = model.Name;
                 clock.Price = model.Price;
-                clock.Features = model.Features;
-                clock.Caveats = model.Caveats;
+                clock.Features = model.Features.TrimEnd('\r', '\n');
+                clock.Caveats = model.Caveats.TrimEnd('\r', '\n');
                 clock.Description = model.Description;
                 clock.Active = model.Active;
                 clock.Featured = model.Featured;

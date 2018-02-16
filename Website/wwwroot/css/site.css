@@ -173,7 +173,7 @@ body {
     margin-bottom: 5px;
 }
 
-    .image-edit-box:hover > div {
+    .image-edit-box:hover div {
         display: flex;
     }
 
@@ -182,18 +182,39 @@ body {
         width: auto;
     }
 
-.image-edit-overlay {
+.image-overlay {
     position: absolute;
+    display: none;
     width: -webkit-fill-available;
     height: 150px;
+    top: 0px;
     background-color: rgba(0, 0, 0, 0.6);
-    top: 0;
-    display: none;
-    justify-content: center;
 }
-    .image-edit-overlay > img {
+
+    .image-overlay > div > img {
         height: 50px;
         margin: auto;
+    }
+
+.image-overlay-panel {
+    position: absolute;
+    width: -webkit-fill-available;
+    height: 75px;
+    justify-content: center;
+}
+
+.default {
+    top: 0px;
+}
+    .default:hover {
+        background-color: rgba(0, 255, 0, 0.4);
+    }
+
+.delete {
+    top: 75px;
+}
+    .delete:hover {
+        background-color: rgba(255, 0, 0, 0.4);
     }
 
 #all-clocks-container {

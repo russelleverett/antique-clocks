@@ -12,8 +12,14 @@ function imageOverview() {
 
         $scope.removeImage = function (id) {
             $http.delete('/images/remove/' + id).then(function (response) {
-                console.log("removing image with id:", id, response);
                 $scope.items = angular.copy(response.data);
+            });
+        }
+
+        $scope.defaultImage = function (id) {
+            $http.post('/images/default/' + id).then(function () {
+                $scope.items = angular.copy(response.data);
+                alert("Image with ID: " + id + " has been made the default image.");
             });
         }
     }];

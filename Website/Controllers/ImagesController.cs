@@ -106,7 +106,29 @@ namespace Website.Controllers {
 
                 var resources = _context.Resources.Where(p => p.ClockId == resource.ClockId).Select(p => new {
                     id = p.Id,
-                    fileName = p.FileName
+                    fileName = p.FileName,
+                    isDefault = p.Default
+                }).ToList();
+                return Json(resources);
+            }
+            return Json(new { });
+        }
+
+        [HttpPost, Authorize]
+        public IActionResult Default(int id = 0) {
+            var resource = _context.Resources.FirstOrDefault(p => p.Id == id);
+            if (resource != null) {
+                var previousDefault = _context.Resources.FirstOrDefault(p => p.Default && p.ClockId == resource.ClockId);
+                if (previousDefault != null) {
+                    previousDefault.Default = false;
+                }
+                resource.Default = true;
+                _context.SaveChanges();
+
+                var resources = _context.Resources.Where(p => p.ClockId == resource.ClockId).Select(p => new {
+                    id = p.Id,
+                    fileName = p.FileName,
+                    isDefault = p.Default
                 }).ToList();
                 return Json(resources);
             }

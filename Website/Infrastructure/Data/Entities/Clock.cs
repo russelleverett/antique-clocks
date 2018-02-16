@@ -22,7 +22,7 @@ namespace Website.Infrastructure.Data.Entities {
             get {
                 var features = new List<string>();
                 if (Features != null) {
-                    foreach (var feature in Features.Split('\r')) {
+                    foreach (var feature in Features.Replace("\n", "").Split('\r')) {
                         if(!string.IsNullOrEmpty(feature))
                             features.Add(feature);
                     }
@@ -37,7 +37,7 @@ namespace Website.Infrastructure.Data.Entities {
             get {
                 var caveats = new List<string>();
                 if (Caveats != null) {
-                    foreach (var caveat in Caveats.Split('\r')) {
+                    foreach (var caveat in Caveats.Replace("\n", "").Split('\r')) {
                         if (!string.IsNullOrEmpty(caveat))
                             caveats.Add(caveat);
                     }

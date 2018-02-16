@@ -26,7 +26,6 @@
                 <img src="/images/@image.Id" onmouseover="swapImage('/images/@image.Id')" />
             }
             <br />
-            <h4>Click the pictures for max resolution.</h4>
         </div>
     </div>
 
@@ -37,13 +36,17 @@
                 <div class="detail-header">Features</div>
                 <ul>
                     @foreach (var feature in Model.FullFeatures) {
-                        <li>@feature</li>
+                        @if (!string.IsNullOrEmpty(feature)) {
+                            <li>@feature</li>
+                        }
                     }
                 </ul>
                 <div class="detail-header">Caveats</div>
                 <ul>
                     @foreach (var caveat in Model.FullCaveats) {
-                        <li>@caveat</li>
+                        @if (!string.IsNullOrEmpty(caveat)) {
+                            <li>@caveat</li>
+                        }
                     }
                 </ul>
             </div>
