@@ -60,7 +60,6 @@ namespace Website.Areas.Admin.Controllers {
 
             // add the resources
             if (model.FileUploads != null) {
-                var _default = true;
                 foreach (var file in model.FileUploads) {
                     var resource = new Resource {
                         Active = true,
@@ -71,12 +70,6 @@ namespace Website.Areas.Admin.Controllers {
                         FileType = FileType.Image
                     };
 
-                    // tag the initial one as the default
-                    if (_default) {
-                        resource.Default = true;
-                        _default = false;
-                    }
-
                     using (var ms = new MemoryStream()) {
                         file.CopyTo(ms);
                         resource.File = ms.ToArray();
@@ -85,6 +78,9 @@ namespace Website.Areas.Admin.Controllers {
                 }
                 _context.SaveChanges();
             }
+
+            // ensure we have a default image
+            EnsureDefaultImage(clock.Id);
 
             // add audio file
             if (model.AudioUpload != null) {
@@ -158,7 +154,6 @@ namespace Website.Areas.Admin.Controllers {
 
             // images
             if (model.FileUploads != null) {
-                var _default = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.Default) != null;
                 foreach (var file in model.FileUploads) {
                     var resource = new Resource {
                         Name = clock.Name,
@@ -169,11 +164,6 @@ namespace Website.Areas.Admin.Controllers {
                         FileType = FileType.Image
                     };
 
-                    if (_default) {
-                        resource.Default = true;
-                        _default = false;
-                    }
-
                     using (var ms = new MemoryStream()) {
                         file.CopyTo(ms);
                         resource.File = ms.ToArray();
@@ -182,6 +172,9 @@ namespace Website.Areas.Admin.Controllers {
                 }
                 _context.SaveChanges();
             }
+
+            // ensure we have a default image
+            EnsureDefaultImage(clock.Id);
 
             // edit audio file
             if (model.AudioUpload != null) {
@@ -218,6 +211,26 @@ namespace Website.Areas.Admin.Controllers {
             _context.SaveChanges();
 
             return Json(new { message = "this happened." });
+        }
+
+        private void EnsureDefaultImage(int id) {
+            var resources = _context.Resources.Where(p => p.ClockId == id).ToList();
+
+            // check existing
+            var defaultImage = resources.FirstOrDefault(p => p.Default);
+            if (defaultImage != null)
+                return;
+
+            // check for a dash 1 image
+            defaultImage = resources.FirstOrDefault(p => p.FileName.Contains("-1."));
+            if (defaultImage == null)
+                defaultImage = _context.Resources.FirstOrDefault();
+
+            // if we have an image make it the default
+            if (defaultImage != null) {
+                defaultImage.Default = true;
+                _context.SaveChanges();
+            }
         }
     }
 }

@@ -1,3 +1,41 @@
 @{
     ViewBag.MenuId = "#book";
 }
+
+<div style="padding: 50px;">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/images/book-cover.jpg" style="max-height: 420px; display: block; margin: 0 auto;" />
+        </div>
+        <div class="col-md-6">
+            <h3 style="text-align: center">HOW TO ORDER</h3>
+            <p>The easiest way to order is to use your credit or debit card and click the Buy Now button below. The price of the book is $44.95 plus priority shipping of $13.45 in the United States. Standard flat rate priority air shipping to most countries is $66.50. Shipping to the some countries may be a little higher. Please email me for a quote.</p>
+            <p>By clicking on the Buy Now button, you will be taken to Paypal's secure server. You can use your Paypal account or a major credit or debit card. No PayPal account is required when paying by credit card.</p>
+            <br />
+            <div class="clearfix">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="TFBSANC72RZ84">
+                    <table class="pull-left">
+                        <tbody>
+                            <tr><td><input type="hidden" name="on0" value="Choose Your Location">Choose Your Location</td></tr>
+                            <tr>
+                                <td>
+                                    <select name="os0">
+                                        <option value="United States">United States $58.55 USD</option>
+                                        <option value="Rest of the World">Outside the United States $112.90 USD</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pull-right">
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
