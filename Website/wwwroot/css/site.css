@@ -436,3 +436,47 @@ h3 .sub-title {
     color: darkcyan;
     margin-bottom: 20px;
 }
+
+.content-page {
+    padding: 30px 50px 50px 50px;
+    font-size: medium;
+}
+
+    .content-page h3 {
+        text-align: center;
+    }
+
+    .content-page p {
+        padding-bottom: 20px;
+    }
+
+.tileboard {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+    .tileboard p {
+        display: block;
+    }
+
+.trademark img {
+    max-height: 151px;
+    width: auto;
+}
+
+.advert img {
+    width: 50%;
+}
+
+.sub-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.with-emphasis {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: large;
+}
