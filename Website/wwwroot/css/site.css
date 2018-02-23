@@ -250,6 +250,7 @@ body {
             #all-clocks-container .clock-panel .clock-panel-header img {
                 height: 350px;
                 width: auto;
+                max-width: 300px;
                 margin: auto;
             }
 
@@ -288,6 +289,7 @@ body {
         #detail-container .gallery-container .main img {
             max-height: 450px;
             width: auto;
+            max-width: 450px;
             margin: auto;
         }
 

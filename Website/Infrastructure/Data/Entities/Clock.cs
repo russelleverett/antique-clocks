@@ -1,19 +1,25 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
 
 namespace Website.Infrastructure.Data.Entities {
     public class Clock : IEntity {
         public int Id { get; set; }
+        [StringLength(20, ErrorMessage = "Buy Now Id must be less than 20 characters.")]
         public string BuyNowId { get; set; }
+        [StringLength(200, ErrorMessage = "Caveats must be less than 200 characters.")]
         public string Caveats { get; set; }
         public string Description { get; set; }
+        [StringLength(400, ErrorMessage = "Features must be less than 400 characters.")]
         public string Features { get; set; }
         public string Name { get; set; }
+        [StringLength(10, ErrorMessage = "Number must be less than 10 characters.")]
         public string Number { get; set; }
         public decimal? Price { get; set; }
         public bool Active { get; set; }
         public bool Featured { get; set; }
+        [StringLength(100, ErrorMessage = "Filters must be less than 100 characters.")]
         public string Filters { get; set; }
         public virtual IEnumerable<Resource> Resources { get; set; }
 
@@ -64,7 +70,7 @@ namespace Website.Infrastructure.Data.Entities {
         [NotMapped]
         public bool IsSold {
             get {
-                return (Price == null || Price == default(decimal));
+                return Filters.Contains("sold");
             }
         }
 

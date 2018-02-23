@@ -79,7 +79,7 @@
             <fieldset>
                 <legend>Filters</legend>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         @Html.CheckBoxFor(x => x.Filters.Lenzkirch)
                         @Html.LabelFor(x => x.Filters.Lenzkirch)
@@ -89,7 +89,7 @@
                         @Html.LabelFor(x => x.Filters.ViennaRegulator)
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         @Html.CheckBoxFor(x => x.Filters.WallClock)
                         @Html.LabelFor(x => x.Filters.WallClock)
@@ -99,7 +99,7 @@
                         @Html.LabelFor(x => x.Filters.TableClock)
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         @Html.CheckBoxFor(x => x.Filters.MiniatureClock)
                         @Html.LabelFor(x => x.Filters.MiniatureClock)
@@ -107,6 +107,12 @@
                     <div class="form-group">
                         @Html.CheckBoxFor(x => x.Filters.GrandfatherClock)
                         @Html.LabelFor(x => x.Filters.GrandfatherClock)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.Filters.Sold)
+                        @Html.LabelFor(x => x.Filters.Sold)
                     </div>
                 </div>
             </fieldset>

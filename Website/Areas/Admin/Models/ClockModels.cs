@@ -94,6 +94,8 @@ namespace Website.Areas.Admin.Models {
         [DisplayName("Grandfather Clock")]
         public bool GrandfatherClock { get; set; }
 
+        public bool Sold { get; set; }
+
         public override string ToString() {
             var sb = new StringBuilder();
 
@@ -103,6 +105,7 @@ namespace Website.Areas.Admin.Models {
             sb.Append((TableClock) ? "table|" : "");
             sb.Append((MiniatureClock) ? "miniature|" : "");
             sb.Append((GrandfatherClock) ? "grandfather|" : "");
+            sb.Append((Sold) ? "sold|" : "");
 
             return sb.ToString().TrimEnd('|');
         }
@@ -114,7 +117,8 @@ namespace Website.Areas.Admin.Models {
                 WallClock = collection.Contains("wall"),
                 TableClock = collection.Contains("table"),
                 MiniatureClock = collection.Contains("miniature"),
-                GrandfatherClock = collection.Contains("grandfather")
+                GrandfatherClock = collection.Contains("grandfather"),
+                Sold = collection.Contains("sold")
             };
         }
     }

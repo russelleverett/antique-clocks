@@ -20,14 +20,8 @@ namespace Website.Controllers {
             var clocks = _context.Clocks.Where(p => p.Active).ToList();
             foreach (var clock in clocks) {
                 // filter results
-                if (filter != null) {
-                    if (filter.Contains("sold")) {
-                        if(!clock.IsSold)
-                            continue;
-                    }   
-                    else if (!clock.Filters.Contains(filter))
+                if (filter != null && !clock.Filters.Contains(filter))
                         continue;
-                }
 
                 var image = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.Default);
                 var imageId = (image != null) ? image.Id : 0;

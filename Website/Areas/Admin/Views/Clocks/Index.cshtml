@@ -4,12 +4,12 @@
 }
 
 <div class="container-fluid">
-    <table class="table table-striped table-responsive">
+    <table class="table table-striped table-responsive" id="clock_list">
         <thead>
             <tr>
+                <th></th>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Type(s)</th>
                 <th>Price</th>
                 <th>Featured</th>
                 <th>
@@ -18,11 +18,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var clock in Model) {
+            @foreach (var clock in Model.OrderBy(p => p.Number)) {
                 <tr>
+                    <td class="priority"></td>
                     <td>@clock.Number</td>
                     <td>@clock.Name</td>
-                    <td>N/A</td>
                     <td>@(clock.Price != null ? string.Format("{0:c}", clock.Price) : "SOLD")</td>
                     <td>@clock.Featured</td>
                     <td>
@@ -33,3 +33,48 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script>
+            $(document).ready(function () {
+                //Helper function to keep table row from collapsing when being sorted
+                var fixHelperModified = function (e, tr) {
+                    var $originals = tr.children();
+                    var $helper = tr.clone();
+                    $helper.children().each(function (index) {
+                        $(this).width($originals.eq(index).width())
+                    });
+                    return $helper;
+                };
+
+                //Make diagnosis table sortable
+                $("#clock_list tbody").sortable({
+                    helper: fixHelperModified,
+                    stop: function (event, ui) {
+                        renumber_table('#clock_list');
+                        console.log(event, ui);
+                    }
+                }).disableSelection();
+
+
+                //Delete button in table rows
+                $('table').on('click', '.btn-delete', function () {
+                    tableID = '#' + $(this).closest('table').attr('id');
+                    r = confirm('Delete this item?');
+                    if (r) {
+                        $(this).closest('tr').remove();
+                        renumber_table(tableID);
+                    }
+                });
+            });
+
+            //Renumber table rows
+            function renumber_table(tableID) {
+                $(tableID + " tr").each(function () {
+                    count = $(this).parent().children().index($(this)) + 1;
+                    $(this).find('.priority').html(count);
+                });
+            }
+    </script>
+}
