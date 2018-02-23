@@ -1,5 +1,13 @@
-﻿angular.module("images", [])
-    .directive("imageOverview", imageOverview);
+﻿angular.module("antiqueClocks", [])
+    .directive("imageOverview", imageOverview)
+    .service("data", dataService)
+    .filter("iif", iif);
+
+function iif() {
+    return function (input, trueValue, falseValue) {
+        return input ? trueValue : falseValue;
+    }
+}
 
 function imageOverview() {
     var controller = ['$scope', '$http', function ($scope, $http) {
@@ -33,3 +41,27 @@ function imageOverview() {
         controller: controller
     };
 };
+
+function dataService($http) {
+    this.get = function (route, callback) {
+        $http.get(route).then(function (response) {
+            if (callback !== null)
+                callback(response.data);
+        }, function (error) {
+            //TODO: NOM NOM
+        });
+    };
+    this.post = function (route, data, callback) {
+        $http.post(route, JSON.stringify(data)).then(function (response) {
+            if (callback) {
+                callback(response.data);
+            }
+        });
+    };
+    this.delete = function (route, callback) {
+        $http.delete(route).then(function (response) {
+            if (callback)
+                callback(response.data);
+        });
+    };
+}

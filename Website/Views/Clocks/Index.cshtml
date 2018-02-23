@@ -6,7 +6,7 @@
 
 <div id="all-clocks-container">
     @if (Model.Count() > 0) {
-        @foreach (var clock in Model) {
+        @foreach (var clock in Model.OrderBy(p => p.SortOrder)) {
             <div class="clock-panel">
                 <div class="clock-panel-header">
                     <a href="/clocks/details/@clock.Id">

@@ -1,80 +1,91 @@
-@model IEnumerable<Clock>
+@model IEnumerable<ClockViewModel>
 @{
     ViewBag.MenuId = "#clocks";
 }
 
-<div class="container-fluid">
-    <table class="table table-striped table-responsive" id="clock_list">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Featured</th>
-                <th>
-                    <a href="/admin/clocks/add" class="btn btn-sm btn-success">Add Old Clock</a>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var clock in Model.OrderBy(p => p.Number)) {
+<div class="container-fluid" ng-app="clock-admin">
+    <div ng-controller="clock-controller as vm">
+        <table class="table table-striped table-responsive" id="clock_list">
+            <thead>
                 <tr>
-                    <td class="priority"></td>
-                    <td>@clock.Number</td>
-                    <td>@clock.Name</td>
-                    <td>@(clock.Price != null ? string.Format("{0:c}", clock.Price) : "SOLD")</td>
-                    <td>@clock.Featured</td>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Featured</th>
+                    <th>
+                        <a href="/admin/clocks/add" class="btn btn-sm btn-success">Add Old Clock</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="clock in vm.clocks | orderBy : 'SortOrder'">
+                    <td>{{ clock.SortOrder }}</td>
+                    <td>{{ clock.Number }}</td>
+                    <td>{{ clock.Name }}</td>
+                    <td>{{ clock.IsSold | iif : 'SOLD' : (clock.Price | currency) }}</td>
+                    <td>{{ clock.Featured }}</td>
                     <td>
-                        <a href="/admin/clocks/edit/@clock.Id" class="btn btn-sm"><span class="glyphicon glyphicon-edit">&nbsp;Edit</span></a>
+                        <a href="/admin/clocks/edit/{{clock.Id}}" class="btn btn-sm"><span class="glyphicon glyphicon-edit">&nbsp;Edit</span></a>
                     </td>
                 </tr>
-             }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @section Scripts {
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script>
-            $(document).ready(function () {
-                //Helper function to keep table row from collapsing when being sorted
-                var fixHelperModified = function (e, tr) {
-                    var $originals = tr.children();
-                    var $helper = tr.clone();
-                    $helper.children().each(function (index) {
-                        $(this).width($originals.eq(index).width())
+        (function () {
+            "use strict"
+
+            angular.module("clock-admin", ["antiqueClocks"]).controller("clock-controller", function (data, $scope) {
+                var vm = this;
+
+                vm.clocks = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+                //Renumber table rows
+                var renumber_table = function (tableID) {
+                    var sortOrder = [];
+
+                    angular.forEach(vm.clocks, function (clock) {
+                        $(tableID + " tbody tr").each(function () {
+                            var clockNumber = $(this).children()[1].innerText;
+                            if (clock.Number == clockNumber) {
+                                clock.SortOrder = $(this).parent().children().index($(this)) + 1;
+                                sortOrder.push({ number: clock.Number, sortOrder: clock.SortOrder });
+                             }
+                        });
                     });
-                    return $helper;
-                };
+                    $scope.$apply();
 
-                //Make diagnosis table sortable
-                $("#clock_list tbody").sortable({
-                    helper: fixHelperModified,
-                    stop: function (event, ui) {
-                        renumber_table('#clock_list');
-                        console.log(event, ui);
-                    }
-                }).disableSelection();
+                    // update the database
+                    data.post('/admin/clocks/sort', sortOrder, function (response) {
+                        console.log(response);
+                    });
+                }
+                
+                var initialize = function () {
+                    var fixHelperModified = function (e, tr) {
+                        var $originals = tr.children();
+                        var $helper = tr.clone();
+                        $helper.children().each(function (index) {
+                            $(this).width($originals.eq(index).width())
+                        });
+                        return $helper;
+                    };
 
-
-                //Delete button in table rows
-                $('table').on('click', '.btn-delete', function () {
-                    tableID = '#' + $(this).closest('table').attr('id');
-                    r = confirm('Delete this item?');
-                    if (r) {
-                        $(this).closest('tr').remove();
-                        renumber_table(tableID);
-                    }
-                });
+                    //Make diagnosis table sortable
+                    $("#clock_list tbody").sortable({
+                        helper: fixHelperModified,
+                        stop: function (event, ui) {
+                            renumber_table('#clock_list');
+                        }
+                    }).disableSelection();
+                }
+                initialize();
             });
-
-            //Renumber table rows
-            function renumber_table(tableID) {
-                $(tableID + " tr").each(function () {
-                    count = $(this).parent().children().index($(this)) + 1;
-                    $(this).find('.priority').html(count);
-                });
-            }
+         })();
     </script>
 }

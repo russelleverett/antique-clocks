@@ -17,7 +17,16 @@ namespace Website.Areas.Admin.Controllers {
         }
 
         public IActionResult Index() {
-            var clocks = _context.Clocks.ToList();
+            var clocks = _context.Clocks.Select(clock => new ClockViewModel {
+                SortOrder = clock.SortOrder,
+                Id = clock.Id,
+                Number = clock.Number,
+                Name = clock.Name,
+                Price = clock.Price,
+                Featured = clock.Featured,
+                IsSold = clock.IsSold,
+            }).ToList();
+
             return View(clocks);
         }
 
@@ -197,6 +206,18 @@ namespace Website.Areas.Admin.Controllers {
             }
 
             return Redirect("/admin/clocks");
+        }
+
+        [HttpPost]
+        public IActionResult Sort([FromBody]ClockSortModel[] models) {
+            foreach (var model in models) {
+                var clock = _context.Clocks.FirstOrDefault(p => p.Number == model.number);
+                if (clock != null)
+                    clock.SortOrder = model.sortOrder;
+            }
+            _context.SaveChanges();
+
+            return Json(new { message = "this happened." });
         }
     }
 }

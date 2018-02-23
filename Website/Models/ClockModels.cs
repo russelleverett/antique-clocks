@@ -16,6 +16,7 @@ namespace Website.Models {
         public int? ImageId { get; set; }
         public string ImageName { get; set; }
         public string PintrestLink { get; set; }
+        public int SortOrder { get; set; }
     }
 
     public class HomePageModel {

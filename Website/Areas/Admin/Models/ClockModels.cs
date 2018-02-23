@@ -5,6 +5,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Website.Areas.Admin.Models {
+    public class ClockViewModel {
+        public int SortOrder { get; set; }
+        public int Id { get; set; }
+        public string Number { get; set; }
+        public string Name { get; set; }
+        public decimal? Price { get; set; }
+        public bool IsSold { get; set; }
+        public bool Featured { get; set; }
+    }
+
     public class ClockCreateModel {
         [Required]
         public string Name { get; set; }
@@ -121,5 +131,10 @@ namespace Website.Areas.Admin.Models {
                 Sold = collection.Contains("sold")
             };
         }
+    }
+
+    public class ClockSortModel {
+        public string number { get; set; }
+        public int sortOrder { get; set; }
     }
 }

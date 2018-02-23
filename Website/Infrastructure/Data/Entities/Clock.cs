@@ -22,6 +22,7 @@ namespace Website.Infrastructure.Data.Entities {
         [StringLength(100, ErrorMessage = "Filters must be less than 100 characters.")]
         public string Filters { get; set; }
         public virtual IEnumerable<Resource> Resources { get; set; }
+        public int SortOrder { get; set; }
 
         [NotMapped]
         public List<string> FullFeatures {
@@ -70,7 +71,9 @@ namespace Website.Infrastructure.Data.Entities {
         [NotMapped]
         public bool IsSold {
             get {
-                return Filters.Contains("sold");
+                if(Filters != null)
+                    return Filters.Contains("sold");
+                return false;
             }
         }
 
