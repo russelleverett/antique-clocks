@@ -9,6 +9,7 @@ namespace Website.Infrastructure.Services {
         IQueryable<Clock> Clocks { get; }
         IQueryable<Resource> Resources { get; }
         IQueryable<Messages> Messages { get; }
+        IQueryable<Part> Parts { get; }
 
         void Add<T>(T entity) where T : class, IEntity;
         void Delete<T>(int id) where T : class, IEntity;
@@ -21,6 +22,7 @@ namespace Website.Infrastructure.Services {
         public virtual DbSet<Clock> Clocks { get; set; }
         public virtual DbSet<Resource> Resources { get; set; }
         public virtual DbSet<Messages> Messages { get; set; }
+        public virtual DbSet<Part> Parts { get; set; }
 
         public DomainContext(DbContextOptions options) : base(options) { }
 
@@ -60,6 +62,10 @@ namespace Website.Infrastructure.Services {
 
         IQueryable<Messages> IDomainContext.Messages {
             get { return Messages.AsQueryable(); }
+        }
+
+        IQueryable<Part> IDomainContext.Parts {
+            get { return Parts.AsQueryable(); }
         }
     }
 }

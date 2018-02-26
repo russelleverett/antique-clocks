@@ -20,12 +20,15 @@ namespace Website.Areas.Admin.Models {
         public string Name { get; set; }
 
         [Required, DisplayName("Clock Number")]
+        [StringLength(10, ErrorMessage = "Number must be less than 10 characters.")]
         public string Number { get; set; }
 
+        [StringLength(200, ErrorMessage = "Caveats must be less than 200 characters.")]
         public string Caveats { get; set; }
 
         public string Description { get; set; }
 
+        [StringLength(400, ErrorMessage = "Features must be less than 400 characters.")]
         public string Features { get; set; }
 
         [DisplayName("Show In Listing")]
@@ -34,7 +37,7 @@ namespace Website.Areas.Admin.Models {
         [DisplayName("Feature On Home Page")]
         public bool Featured { get; set; }
 
-        [DisplayName("Buy Now Id")]
+        [DisplayName("Buy Now Id"), StringLength(20, ErrorMessage = "Buy Now Id must be less than 20 characters.")]
         public string BuyNowId { get; set; }
 
         public decimal? Price { get; set; }

@@ -470,7 +470,7 @@ h3 .sub-title {
     width: 50%;
 }
 
-.sub-title {
+div .sub-title {
     font-weight: bold;
     text-align: center;
 }
