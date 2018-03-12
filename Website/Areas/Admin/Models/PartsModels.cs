@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.VisualStudio.Web.CodeGeneration.Utils;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -20,5 +21,11 @@ namespace Website.Areas.Admin.Models {
         public List<IFormFile> FileUploads { get; set; }
         [DisplayName("Is Lenzkirch?")]
         public bool IsLenzkirch { get; set; }
+        public List<Resource> Images { get; set; }
+    }
+
+    public class PartSortModel {
+        public int id { get; set; }
+        public int sortOrder { get; set; }
     }
 }

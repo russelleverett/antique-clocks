@@ -1,3 +1,83 @@
+@model PartCreateEditModel
 @{
     ViewBag.MenuId = "#parts";
+}
+
+<div style="padding: 50px">
+    @using (Html.BeginForm(FormMethod.Post, true, new { @class = "validation-form", action = "/Admin/Parts/Edit", enctype = "multipart/form-data" })) {
+        @Html.HiddenFor(x => x.Id);
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("~/Views/Shared/_ValidationSummary.cshtml")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>Update Part:</legend>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Title)
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Price)
+                        @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Shipping)
+                        @Html.TextBoxFor(x => x.Shipping, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Description)
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.BuyNowId)
+                        @Html.TextBoxFor(x => x.BuyNowId, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(x => x.IsLenzkirch)
+                        @Html.LabelFor(x => x.IsLenzkirch)
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>&nbsp;</legend>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.FileUploads)
+                        <input type="file" id="FileUploads" name="FileUploads" class="form-control" multiple />
+                    </div>
+                </fieldset>
+                <div ng-app="editApp" ng-controller="editController as e">
+                    <image-overview ng-model="e.model" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-lg btn-success pull-right" value="Update Part" />
+                <a href="/admin/parts" class="btn btn-danger btn-lg">Cancel</a>
+            </div>
+            <br class="clearfix" />
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            "use strict"
+
+            angular.module("editApp", ['antiqueClocks']).controller("editController", editController);
+            function editController() {
+                var vm = this;
+
+                vm.model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Images));
+            };
+         })();
+    </script>
 }

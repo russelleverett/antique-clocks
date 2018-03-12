@@ -129,11 +129,11 @@ namespace Website.Areas.Admin.Controllers {
         }
 
         [HttpPost]
-        public IActionResult Sort([FromBody]ClockSortModel[] models) {
+        public IActionResult Sort([FromBody]PartSortModel[] models) {
             foreach (var model in models) {
-                var clock = _context.Clocks.FirstOrDefault(p => p.Number == model.number);
-                if (clock != null)
-                    clock.SortOrder = model.sortOrder;
+                var part = _context.Parts.FirstOrDefault(p => p.Id == model.id);
+                if (part != null)
+                    part.SortOrder = model.sortOrder;
             }
             _context.SaveChanges();
 

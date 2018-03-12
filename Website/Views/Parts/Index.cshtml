@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Part>
+@{
+    ViewBag.MenuId = "#parts";
+}
+
+<div class="content-page">
+    <h3>Original Clock Parts</h3>
+    <br />
+    <div>
+        <p>I have a number of Lenzkirch movements and other parts for Lenzkirch clocks. If I do not have the part that you need I can usually get it. Parts that are not available can usually be made. I have a lot of parts that are not listed here. Contact me for your specific Lenzkirch clock needs and I will try to assist you in finding the parts that you need.</p>
+
+        <div style="font-size: large; font-weight: bold; margin-bottom:20px;">
+            <span>Lenzkirch Movements Available</span>
+            <ul>
+                <li>2-Weight 8-day Vienna style (parts and complete restorable movements)</li>
+                <li>26-Series time and strike (parts and complete movements)</li>
+            </ul>
+
+            <div>Contact me for availability and price</div><br /> 
+            <a href="mailto:clocks@antique-clock.com?subject=Lenzkirch Parts" class="btn btn-lg btn-info">Request Information</a>
+        </div>
+    </div>
+    @foreach (var part in Model.OrderBy(p => p.SortOrder)) {
+        <div class="part-header" style="background-color: darkcyan; padding: 15px 0 15px 0; font-size: larger; text-align: center; color: white;">
+            @part.Title
+        </div>
+        <div class="row" style="margin: 20px;">
+            <div class="col-md-4 gallery-container container-fluid">
+                <div class="col-md-5 thumbs">
+                    @foreach (var image in part.Resources) {
+                        <img src="/images/@image.Id" />
+                    }
+                    <br />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <p>@part.Description</p>
+                    <p>@string.Format("{0:c}", part.Price) plus @string.Format("{0:c}", part.Shipping) shipping. Outside the United States contact me for shipping charges.</p>
+                </div>
+                <div class="row clearfix">
+                    <div style="float:left">
+                        <a href="mailto:clocks@antique-clock.com?subject=@part.Title" class="btn btn-lg btn-info">Request Information</a>
+                    </div>
+                    <div style="float: right; margin-right: 5%;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="@part.BuyNowId">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

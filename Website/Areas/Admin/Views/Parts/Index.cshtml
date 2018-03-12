@@ -51,21 +51,21 @@
                 var renumber_table = function (tableID) {
                     var sortOrder = [];
 
-                    //angular.forEach(vm.clocks, function (clock) {
-                    //    $(tableID + " tbody tr").each(function () {
-                    //        var clockNumber = $(this).children()[1].innerText;
-                    //        if (clock.Number == clockNumber) {
-                    //            clock.SortOrder = $(this).parent().children().index($(this)) + 1;
-                    //            sortOrder.push({ number: clock.Number, sortOrder: clock.SortOrder });
-                    //         }
-                    //    });
-                    //});
+                    angular.forEach(vm.parts, function (part) {
+                        $(tableID + " tbody tr").each(function () {
+                            var partNumber = $(this).children()[1].innerText;
+                            if (part.Id == partNumber) {
+                                part.SortOrder = $(this).parent().children().index($(this)) + 1;
+                                sortOrder.push({ id: part.Id, sortOrder: part.SortOrder });
+                             }
+                        });
+                    });
                     $scope.$apply();
 
                     // update the database
-                    //data.post('/admin/parts/sort', sortOrder, function (response) {
-                    //    console.log(response);
-                    //});
+                    data.post('/admin/parts/sort', sortOrder, function (response) {
+                        console.log(response);
+                    });
                 }
 
                 var initialize = function () {

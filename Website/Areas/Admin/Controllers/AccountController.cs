@@ -31,13 +31,6 @@ namespace Website.Areas.Admin.Controllers {
             var user = _context.Users.FirstOrDefault(p => p.Username == model.Username);
             if (user != null) {
                 var passwordHash = Hash(user.Salt + model.Password);
-                if (passwordHash != user.PasswordHash) {
-                    return Json(new {
-                        expected = user.PasswordHash,
-                        actual = passwordHash
-                    });
-                }
-
                 HttpContext.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(new ClaimsIdentity(new Claim[] {
                     new Claim(ClaimTypes.Name, user.Username)

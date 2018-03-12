@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Website.Models;
-using System.Net;
 using Website.Infrastructure.Services;
 using Website.Infrastructure.Data.Entities;
 
@@ -22,6 +21,10 @@ namespace Website.Controllers {
                 // filter results
                 if (filter != null && !clock.Filters.Contains(filter))
                         continue;
+
+                // remove sold clocks from all results
+                if (filter == null && clock.IsSold)
+                    continue;
 
                 var image = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.Default);
                 var imageId = (image != null) ? image.Id : 0;

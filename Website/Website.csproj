@@ -45,7 +45,6 @@
     <Folder Include="Views\About\" />
     <Folder Include="Views\Links\" />
     <Folder Include="Views\Services\" />
-    <Folder Include="Views\Parts\" />
   </ItemGroup>
 
 </Project>
