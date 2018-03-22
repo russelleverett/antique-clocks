@@ -50,7 +50,8 @@ namespace Website.Areas.Admin.Controllers {
                         FileName = file.FileName,
                         ContentType = file.ContentType,
                         ClockId = part.Id,
-                        FileType = FileType.Image
+                        FileType = FileType.Image,
+                        ParentTypeId = 1
                     };
 
                     using (var ms = new MemoryStream()) {
@@ -110,7 +111,8 @@ namespace Website.Areas.Admin.Controllers {
                         ContentType = file.ContentType,
                         Active = true,
                         ClockId = part.Id,
-                        FileType = FileType.Image
+                        FileType = FileType.Image,
+                        ParentTypeId = 1
                     };
 
                     using (var ms = new MemoryStream()) {

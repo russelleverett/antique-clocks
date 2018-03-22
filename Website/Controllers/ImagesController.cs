@@ -39,12 +39,12 @@ namespace Website.Controllers {
                 return new NotFoundResult();
 
             // local hosts so serve the default image
-            if (host.Contains("localhost")) {
-                var filePath = @"./wwwroot/images/coming-soon.png";
-                using (var ms = new MemoryStream(System.IO.File.ReadAllBytes(filePath))) {
-                    return File(ms.ToArray(), "image/png", "coming-soon.png");
-                }
-            }
+            //if (host.Contains("localhost")) {
+            //    var filePath = @"./wwwroot/images/coming-soon.png";
+            //    using (var ms = new MemoryStream(System.IO.File.ReadAllBytes(filePath))) {
+            //        return File(ms.ToArray(), "image/png", "coming-soon.png");
+            //    }
+            //}
 
             // serve the image
             var resource = _context.Resources.FirstOrDefault(p => p.Id == id);

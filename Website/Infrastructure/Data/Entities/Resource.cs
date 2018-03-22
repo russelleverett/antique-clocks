@@ -20,6 +20,7 @@ namespace Website.Infrastructure.Data.Entities {
         public bool Active { get; set; }
         public bool Default { get; set; }
         public FileType FileType { get; set; }
+        public int ParentTypeId { get; set; }
 
         public HtmlString ImageTag(dynamic props = null) {
             // build the property collection

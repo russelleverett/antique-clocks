@@ -26,7 +26,7 @@ namespace Website.Controllers {
                 if (filter == null && clock.IsSold)
                     continue;
 
-                var image = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.Default);
+                var image = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.Default && p.ParentTypeId == 0);
                 var imageId = (image != null) ? image.Id : 0;
                 models.Add(new ClockBrowseModel {
                     Id = clock.Id,
@@ -46,7 +46,7 @@ namespace Website.Controllers {
             // get the clock
             var clock = _context.Clocks.FirstOrDefault(p => p.Id == id);
             if (clock != null) {
-                clock.Resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image).ToList();
+                clock.Resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image && p.ParentTypeId == 0).ToList();
                 clock.ClockAudio = _context.Resources.FirstOrDefault(p => p.ClockId == clock.Id && p.FileType == FileType.Audio);
                 return View(clock);
             }

@@ -107,7 +107,7 @@ namespace Website.Areas.Admin.Controllers {
         public IActionResult Edit(int id = 0) {
             var clock = _context.Clocks.FirstOrDefault(p => p.Id == id);
             if (clock != null) {
-                var resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image).Select(p => new {
+                var resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image && p.ParentTypeId == 0).Select(p => new {
                     id = p.Id,
                     fileName = p.FileName,
                     isDefault = p.Default

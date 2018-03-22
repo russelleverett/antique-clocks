@@ -25,12 +25,11 @@
             @part.Title
         </div>
         <div class="row" style="margin: 20px;">
-            <div class="col-md-4 gallery-container container-fluid">
-                <div class="col-md-5 thumbs">
+            <div class="col-md-4 container-fluid">
+                <div style="display: inline-table;">
                     @foreach (var image in part.Resources) {
-                        <img src="/images/@image.Id" />
+                        <img src="/images/@image.Id" style="width: auto; height: 136px; margin: 5px;" />
                     }
-                    <br />
                 </div>
             </div>
             <div class="col-md-8">

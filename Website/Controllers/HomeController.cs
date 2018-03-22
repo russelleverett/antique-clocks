@@ -19,7 +19,7 @@ namespace Website.Controllers {
             // get the clocks
             var featuredClocks = _context.Clocks.Where(p => p.Featured);
             foreach (var feature in featuredClocks) {
-                var image = _context.Resources.FirstOrDefault(p => p.ClockId == feature.Id && p.Default);
+                var image = _context.Resources.FirstOrDefault(p => p.ClockId == feature.Id && p.Default && p.ParentTypeId == 0);
                 clocks.Add(new ClockFeatureModel {
                     Id = feature.Id,
                     ImageId = image?.Id,
