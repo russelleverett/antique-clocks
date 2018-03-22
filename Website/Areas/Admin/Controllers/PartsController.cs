@@ -72,6 +72,12 @@ namespace Website.Areas.Admin.Controllers {
         public IActionResult Edit(int id = 0) {
             var part = _context.Parts.FirstOrDefault(p => p.Id == id);
             if (part != null) {
+                var images = _context.Resources.Where(p => p.ClockId == part.Id && p.ParentTypeId == 1).Select(p => new {
+                    id = p.Id,
+                    fileName = p.FileName,
+                    isDefault = p.Default
+                }).ToList();
+
                 return View(new PartCreateEditModel {
                     Id = part.Id,
                     Title = part.Title,
@@ -80,6 +86,7 @@ namespace Website.Areas.Admin.Controllers {
                     BuyNowId = part.BuyNowId,
                     Description = part.Description,
                     IsLenzkirch = part.IsLenzkirch,
+                    Images = images
                 });
             }
             return Redirect("/admin/parts");

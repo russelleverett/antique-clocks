@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.VisualStudio.Web.CodeGeneration.Utils;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Website.Infrastructure.Data.Entities;
 
 namespace Website.Areas.Admin.Models {
     public class PartCreateEditModel {
@@ -21,7 +21,7 @@ namespace Website.Areas.Admin.Models {
         public List<IFormFile> FileUploads { get; set; }
         [DisplayName("Is Lenzkirch?")]
         public bool IsLenzkirch { get; set; }
-        public List<Resource> Images { get; set; }
+        public dynamic Images { get; set; }
     }
 
     public class PartSortModel {
