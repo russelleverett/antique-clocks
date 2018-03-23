@@ -11,6 +11,10 @@ body {
     background-size: cover;
 }
 
+hr {
+    border-top: 5px solid darkcyan;
+}
+
 .container {
     background: #fff;
     display: block;
@@ -480,3 +484,12 @@ div .sub-title {
     text-decoration: underline;
     font-size: large;
 }
+
+.carvings img {
+    width: auto;
+    max-width: 100%;
+    height: 450px;
+    display: block;
+    margin: auto;
+}
+
