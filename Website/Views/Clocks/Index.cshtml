@@ -9,9 +9,14 @@
         @foreach (var clock in Model.OrderBy(p => p.SortOrder)) {
             <div class="clock-panel">
                 <div class="clock-panel-header">
+                    @if (clock.ShowDetails) {
                     <a href="/clocks/details/@clock.Id">
                         <img src="/images/@clock.ImageId" alt="@clock.ImageName" />
                     </a>
+                    }
+                    else {
+                        <img src="/images/@clock.ImageId" alt="@clock.ImageName" />
+                    }
                 </div>
                 <div class="clock-panel-footer">
                     <div class="clock-panel-title">
