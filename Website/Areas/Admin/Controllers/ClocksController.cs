@@ -110,7 +110,8 @@ namespace Website.Areas.Admin.Controllers {
                 var resources = _context.Resources.Where(p => p.ClockId == clock.Id && p.FileType == FileType.Image && p.ParentTypeId == 0).Select(p => new {
                     id = p.Id,
                     fileName = p.FileName,
-                    isDefault = p.Default
+                    isDefault = p.Default,
+                    parentTypeId = p.ParentTypeId
                 }).ToList();
 
                 return View(new ClockEditModel {

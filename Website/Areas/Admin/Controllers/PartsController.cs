@@ -75,7 +75,8 @@ namespace Website.Areas.Admin.Controllers {
                 var images = _context.Resources.Where(p => p.ClockId == part.Id && p.ParentTypeId == 1).Select(p => new {
                     id = p.Id,
                     fileName = p.FileName,
-                    isDefault = p.Default
+                    isDefault = p.Default,
+                    parentTypeId = p.ParentTypeId
                 }).ToList();
 
                 return View(new PartCreateEditModel {
@@ -150,7 +151,7 @@ namespace Website.Areas.Admin.Controllers {
         }
 
         private void EnsureDefaultImage(int id) {
-            var resources = _context.Resources.Where(p => p.ClockId == id).ToList();
+            var resources = _context.Resources.Where(p => p.ClockId == id && p.ParentTypeId == 1).ToList();
 
             // check existing
             var defaultImage = resources.FirstOrDefault(p => p.Default);

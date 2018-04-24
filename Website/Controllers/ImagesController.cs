@@ -115,10 +115,10 @@ namespace Website.Controllers {
         }
 
         [HttpPost, Authorize]
-        public IActionResult Default(int id = 0) {
+        public IActionResult Default(int id = 0, [FromQuery]int parentTypeId = 0) {
             var resource = _context.Resources.FirstOrDefault(p => p.Id == id);
             if (resource != null) {
-                var previousDefault = _context.Resources.FirstOrDefault(p => p.Default && p.ClockId == resource.ClockId);
+                var previousDefault = _context.Resources.FirstOrDefault(p => p.Default && p.ClockId == resource.ClockId && p.ParentTypeId == parentTypeId);
                 if (previousDefault != null) {
                     previousDefault.Default = false;
                 }

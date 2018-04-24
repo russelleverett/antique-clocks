@@ -2,7 +2,7 @@
     <div ng-repeat="resource in items" id="box-{{ resource.id }}" class="image-edit-box">
         <img src="/images/{{ resource.id }}" alt="{{ resource.fileName }}" />
         <div class="image-overlay">
-            <div class="image-overlay-panel default" ng-click="defaultImage( resource.id )">
+            <div class="image-overlay-panel default" ng-click="defaultImage( resource.id, resource.parentTypeId )">
                 <img src="/images/default.png" />
             </div>
             <div class="image-overlay-panel delete" ng-click="removeImage( resource.id )">
