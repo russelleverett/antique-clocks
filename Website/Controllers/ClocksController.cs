@@ -35,7 +35,8 @@ namespace Website.Controllers {
                     ImageName = image?.Name,
                     Number = clock.Number,
                     PintrestLink = clock.PintrestLink(imageId),
-                    SortOrder = clock.SortOrder
+                    SortOrder = clock.SortOrder,
+                    ShowDetails = !clock.IsSold
                 });
             }
 

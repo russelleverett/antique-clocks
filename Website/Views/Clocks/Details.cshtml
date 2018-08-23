@@ -54,7 +54,7 @@
                 <div class="detail-header">Description</div>
                 <div class="detail-description">@Model.Description</div>
                 @if (Model.ClockAudio != null) {
-                    <a href="~/images/@Model.ClockAudio.Id" class="strike-link">Click here to hear it strike</a>
+                    <a href="~/images/@Model.ClockAudio.Id" class="strike-link">Click here to see a video</a>
                 }
                 <div class="detail-price">
                     @(Model.IsSold ? "SOLD" : string.Format("Price: {0:c}", Model.Price))
