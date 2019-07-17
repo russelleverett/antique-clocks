@@ -15,7 +15,7 @@
             <div class="fb-like" data-href="http://www.antique-clock.com/images/@defaultImage?.Id" data-width="200" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
     </div>
-    
+
     <!-- Gallery -->
     <div class="row gallery-container container-fluid">
         <div class="col-md-7 main">
@@ -54,7 +54,7 @@
                 <div class="detail-header">Description</div>
                 <div class="detail-description">@Model.Description</div>
                 @if (Model.ClockAudio != null) {
-                    <a href="~/images/@Model.ClockAudio.Id" class="strike-link">Click here to see a video</a>
+                    <a href="~/images/@Model.ClockAudio.Id" class="strike-link">Click here to hear it strike</a>
                 }
                 <div class="detail-price">
                     @(Model.IsSold ? "SOLD" : string.Format("Price: {0:c}", Model.Price))
@@ -67,7 +67,12 @@
                     Request Information
                 </a>
             </div>
-            <div class="col-md-2 col-md-offset-2">
+            <div class="col-md-2">
+                <a href="mailto:clocks@antique-clock.com?subject=@string.Format("{0} {1}", Model.Name, Model.Number)" class="btn btn-lg btn-info">
+                    Submit Offer
+                </a>
+            </div>
+            <div class="col-md-2">
                 @if (!string.IsNullOrEmpty(Model.BuyNowId) && !Model.IsSold) {
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                         <input type="hidden" name="cmd" value="_s-xclick">

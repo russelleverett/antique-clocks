@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Website.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Website.Infrastructure.Data.Caches;
 
 namespace Website {
     public class Startup {

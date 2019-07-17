@@ -13,7 +13,7 @@ namespace Website.Controllers {
         public IActionResult Index(string filter = null) {
             var lenzkirch = filter == "lenzkirch";
 
-            var parts = _context.Parts.Where(p => p.IsLenzkirch == lenzkirch).ToList();
+            var parts = _context.Parts.Where(p => p.IsLenzkirch == lenzkirch && p.Active).ToList();
             parts.ForEach(p => {
                 p.Resources = _context.Resources.Where(x => x.ClockId == p.Id && x.ParentTypeId == 1);
             });

@@ -10,12 +10,13 @@ using System.Drawing;
 using System;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Website.Infrastructure.Data.Caches;
 
 namespace Website.Controllers {
     public class ImagesController : Controller {
         private readonly IDomainContext _context;
         private readonly IConfiguration _config;
-
+        
         public ImagesController(IDomainContext context, IConfiguration config) {
             _context = context;
             _config = config;

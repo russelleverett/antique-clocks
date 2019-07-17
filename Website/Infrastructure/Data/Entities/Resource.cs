@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Html;
 using System.Collections.Generic;
 using System.Reflection;
 using Website.Infrastructure.Extensions;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Website.Infrastructure.Data.Entities {
     public enum FileType {
@@ -10,7 +12,7 @@ namespace Website.Infrastructure.Data.Entities {
         Audio = 1
     }
 
-    public class Resource : IEntity {
+    public class Resource : IDatabaseEntity {
         public int Id { get; set; }
         public int ClockId { get; set; }
         public string Name { get; set; }
@@ -21,6 +23,11 @@ namespace Website.Infrastructure.Data.Entities {
         public bool Default { get; set; }
         public FileType FileType { get; set; }
         public int ParentTypeId { get; set; }
+
+        [NotMapped]
+        public DateTime CreateDate { get; set; }
+        [NotMapped]
+        public DateTime? UpdateDate { get; set; }
 
         public HtmlString ImageTag(dynamic props = null) {
             // build the property collection

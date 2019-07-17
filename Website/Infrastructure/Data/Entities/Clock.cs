@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
 
 namespace Website.Infrastructure.Data.Entities {
-    public class Clock : IEntity {
+    public class Clock : IDatabaseEntity {
         public int Id { get; set; }
         public string BuyNowId { get; set; }
         public string Caveats { get; set; }
@@ -18,6 +19,11 @@ namespace Website.Infrastructure.Data.Entities {
         public string Filters { get; set; }
         public virtual IEnumerable<Resource> Resources { get; set; }
         public int SortOrder { get; set; }
+
+        [NotMapped]
+        public DateTime CreateDate { get; set; }
+        [NotMapped]
+        public DateTime? UpdateDate { get; set; }
 
         [NotMapped]
         public List<string> FullFeatures {

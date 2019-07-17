@@ -21,6 +21,8 @@ namespace Website.Areas.Admin.Models {
         public List<IFormFile> FileUploads { get; set; }
         [DisplayName("Is Lenzkirch?")]
         public bool IsLenzkirch { get; set; }
+        [DisplayName("Show in List")]
+        public bool Active { get; set; }
         public dynamic Images { get; set; }
     }
 

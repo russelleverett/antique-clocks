@@ -37,6 +37,7 @@ namespace Website.Areas.Admin.Controllers {
                 BuyNowId = model.BuyNowId,
                 Description = model.Description,
                 IsLenzkirch = model.IsLenzkirch,
+                Active = model.Active
             };
             _context.Add(part);
             _context.SaveChanges();
@@ -87,6 +88,7 @@ namespace Website.Areas.Admin.Controllers {
                     BuyNowId = part.BuyNowId,
                     Description = part.Description,
                     IsLenzkirch = part.IsLenzkirch,
+                    Active = part.Active,
                     Images = images
                 });
             }
@@ -106,6 +108,7 @@ namespace Website.Areas.Admin.Controllers {
                 part.Description = model.Description;
                 part.BuyNowId = model.BuyNowId;
                 part.IsLenzkirch = model.IsLenzkirch;
+                part.Active = model.Active;
 
                 _context.SaveChanges();
             }

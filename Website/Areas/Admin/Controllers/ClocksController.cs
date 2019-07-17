@@ -6,6 +6,7 @@ using Website.Infrastructure.Data.Entities;
 using Website.Areas.Admin.Models;
 using System.IO;
 using System.Collections.Generic;
+using Website.Infrastructure.Data.Caches;
 
 namespace Website.Areas.Admin.Controllers {
     [Area("Admin"), Authorize]
@@ -149,9 +150,8 @@ namespace Website.Areas.Admin.Controllers {
                 clock.Featured = model.Featured;
                 clock.Filters = model.Filters.ToString();
                 clock.BuyNowId = model.BuyNowId;
-
-                _context.SaveChanges();
             }
+            _context.SaveChanges();
 
             // images
             if (model.FileUploads != null) {
@@ -204,14 +204,17 @@ namespace Website.Areas.Admin.Controllers {
 
         [HttpPost]
         public IActionResult Sort([FromBody]ClockSortModel[] models) {
+            int numberSorted = 0;
+            var clocks = _context.Clocks.ToList();
             foreach (var model in models) {
-                var clock = _context.Clocks.FirstOrDefault(p => p.Number == model.number);
-                if (clock != null)
+                var clock = clocks.FirstOrDefault(p => p.Number == model.number);
+                if (clock != null && clock.SortOrder != model.sortOrder) {
                     clock.SortOrder = model.sortOrder;
+                    numberSorted++;
+                }
             }
             _context.SaveChanges();
-
-            return Json(new { message = "this happened." });
+            return Json(new { message = "sorted: " + numberSorted + " clocks" });
         }
 
         private void EnsureDefaultImage(int id) {
@@ -219,13 +222,15 @@ namespace Website.Areas.Admin.Controllers {
 
             // check existing
             var defaultImage = resources.FirstOrDefault(p => p.Default);
-            if (defaultImage != null)
+            if (defaultImage != null) {
                 return;
+            }
 
             // check for a dash 1 image
             defaultImage = resources.FirstOrDefault(p => p.FileName.Contains("-1."));
-            if (defaultImage == null)
+            if (defaultImage == null) {
                 defaultImage = _context.Resources.FirstOrDefault();
+            }
 
             // if we have an image make it the default
             if (defaultImage != null) {

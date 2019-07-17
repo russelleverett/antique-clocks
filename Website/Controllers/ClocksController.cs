@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Website.Models;
 using Website.Infrastructure.Services;
@@ -16,7 +16,7 @@ namespace Website.Controllers {
         public IActionResult Index(string filter = null) {
             var models = new List<ClockBrowseModel>();
 
-            var clocks = _context.Clocks.Where(p => p.Active).ToList();
+            var clocks = _context.Clocks.Where(p => p.Active);
             foreach (var clock in clocks) {
                 // filter results
                 if (filter != null && !clock.Filters.Contains(filter))

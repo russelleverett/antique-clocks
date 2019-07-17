@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 This file is used by the publish/package process of your Web project. You can customize the behavior of this process
 by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
@@ -6,12 +6,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnbfohGXs5USFCzzC09RuowAAAAACAAAAAAADZgAAwAAAABAAAABSkL+GquJatL7QWPt7is8JAAAAAASAAACgAAAAEAAAABrFaDAtcDLPZb0omP4awcSAAAAAxe8dqQYoscMB2/7AauxiraSrsNAtt1/+J8aFeQZu4Fz2FNHvkiXoEmudHgSYa8i2jVLGPxahw2zCdXnVPv17PkW3dmK5X+KzhGkHFKpIZ1RPEipAEmpKT0VUKKA+LRZ2mGCLLeGyUKABwEV8ZxiYI/XVd3HEJVDQFQrLn1rzhHIUAAAAa6B0zIuvsTUXez6KMkEXea+9QlM=</EncryptedPassword>
-    <_NewBackgroundProfile>False</_NewBackgroundProfile>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAXzEsJuPOgk+OWq0y3We3PwAAAAACAAAAAAADZgAAwAAAABAAAADiYFHWlNCs92nq8wb/0T9gAAAAAASAAACgAAAAEAAAAIOHHiTrTkCORkhYMLFEGdCAAAAA4SBd+IUAFc8iq7+OdRggFMvaCGiquor5trNX6v5aBFToLc/tf/jow/waytEG1jV+92H8eW2nnLpzd4+Zd647PruQBndolQW8FzkpIOwOk2ZwqdKnzO22CeAnWlnry0iWxqKuYtdlRM4ZgQ1SRyxoytQZsbgX9dxPHqqJyts+/0QUAAAA+3Xbh9iAqFAeknF9GklbrO0pFOs=</EncryptedPassword>
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="Website">
-      <Value>Server=tcp:antique-clocks.database.windows.net,1433;Initial Catalog=AntiqueClocks;Persist Security Info=False;User ID=website;Password=hkeubqevs4?w;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
 </Project>

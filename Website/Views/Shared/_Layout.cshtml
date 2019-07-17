@@ -64,7 +64,6 @@
     @RenderSection("Scripts", false)
     <script>
         $('img').each(function () {
-            console.log(this);
             $(this).attr('oncontextmenu', 'return false;');
         });
         $('@ViewBag.MenuId').addClass("active");

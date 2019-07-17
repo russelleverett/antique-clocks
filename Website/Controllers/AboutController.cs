@@ -21,9 +21,5 @@ namespace Website.Controllers {
         public IActionResult Shipping() {
             return View();
         }
-
-        public IActionResult Sell() {
-            return View();
-        }
     }
 }

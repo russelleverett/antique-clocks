@@ -14,6 +14,7 @@ namespace Website.Infrastructure.Services {
         void Add<T>(T entity) where T : class, IEntity;
         void Delete<T>(int id) where T : class, IEntity;
         void Reload<T>(T entity) where T : class, IEntity;
+        IQueryable<T> Queriable<T>() where T : class, IDatabaseEntity;
         void SaveChanges();
     }
 
@@ -43,6 +44,9 @@ namespace Website.Infrastructure.Services {
         }
         public void Reload<T>(T entity) where T : class, IEntity {
             Entry<T>(entity).Reload();
+        }
+        public IQueryable<T> Queriable<T>() where T : class, IDatabaseEntity {
+            return Set<T>().AsQueryable();
         }
         void IDomainContext.SaveChanges() {
             SaveChanges();

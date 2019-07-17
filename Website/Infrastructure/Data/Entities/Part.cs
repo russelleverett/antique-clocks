@@ -12,6 +12,8 @@ namespace Website.Infrastructure.Data.Entities {
         public string BuyNowId { get; set; }
         public bool IsLenzkirch { get; set; }
         public int SortOrder { get; set; }
+        public bool Active { get; set; }
+
         [NotMapped]
         public IEnumerable<Resource> Resources { get; set; }
     }
